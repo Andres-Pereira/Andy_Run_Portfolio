@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { WEB3FORMS } from '../core/content/profile';
 import { App } from '../app';
 import { Contact } from './contact/contact';
-import { Hero, bootTimeline } from './hero/hero';
+import { Hero, bootTimeline, socialFitsInRow } from './hero/hero';
 import { Projects } from './projects/projects';
 
 const text = (el: Element | null) => el?.textContent?.replace(/\s+/g, ' ').trim() ?? '';
@@ -71,6 +71,20 @@ describe('Hero boot', () => {
     expect(el.querySelector('.actions')!.classList).toContain('on');
     expect(text(el.querySelector('.typed'))).toBe('Andy.Run');
     expect(el.querySelector('ar-isotype')).not.toBeNull();
+  });
+});
+
+describe('Hero social icons', () => {
+  // CTA + links + badge medidos en ES a 1000px; la fila mide 885px y el gap es 28px
+  const es = [204, 311, 274];
+
+  it('move to the terminal bar on desktop when the row cannot fit them', () => {
+    expect(socialFitsInRow(885, es, 28, true)).toBe(false);
+    expect(socialFitsInRow(990, es, 28, true)).toBe(true);
+  });
+
+  it('always stay in the row on mobile, where they wrap by design', () => {
+    expect(socialFitsInRow(350, es, 16, false)).toBe(true);
   });
 });
 

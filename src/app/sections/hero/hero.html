@@ -6,7 +6,25 @@
 <div class="wrap">
   <div class="terminal" (click)="skip()">
     <div class="edge" aria-hidden="true"></div>
-    <div class="bar" aria-hidden="true"><span>~/andy.run</span><span>portfolio · 2026</span></div>
+    <div class="bar" [class.with-icons]="iconsInBar()">
+      <span aria-hidden="true">~/andy.run</span>
+      <div class="bar-end">
+        <span aria-hidden="true">portfolio · 2026</span>
+        <!-- Solo cuando no entran en la fila de acciones (desktop angosto, sobre todo en ES) -->
+        @if (iconsInBar()) {
+          <div class="bar-social boot" [class.on]="step() >= 7">
+            <a
+              arIconButton
+              icon="linkedin"
+              size="sm"
+              [href]="links.linkedin"
+              aria-label="LinkedIn"
+            ></a>
+            <a arIconButton icon="github" size="sm" [href]="links.github" aria-label="GitHub"></a>
+          </div>
+        }
+      </div>
+    </div>
 
     <div class="body">
       <p class="cmd">
@@ -50,17 +68,19 @@
     </div>
   </div>
 
-  <div class="actions boot" [class.on]="step() >= 7">
-    <a arButton size="lg" href="#contact" arrow class="cta">{{ i18n.t().cta }}</a>
-    <div class="paths">
+  <div #actions class="actions boot" [class.on]="step() >= 7">
+    <a #cta arButton size="lg" href="#contact" arrow class="cta">{{ i18n.t().cta }}</a>
+    <div #paths class="paths">
       <a href="#experience">{{ i18n.t().hiring }}</a>
       <span aria-hidden="true">·</span>
       <a href="#projects">{{ i18n.t().needsw }}</a>
     </div>
-    <ar-pill variant="accent" dot>{{ i18n.t().badge }}</ar-pill>
-    <div class="social">
-      <a arIconButton icon="linkedin" [href]="links.linkedin" aria-label="LinkedIn"></a>
-      <a arIconButton icon="github" [href]="links.github" aria-label="GitHub"></a>
-    </div>
+    <ar-pill #badge variant="accent" dot>{{ i18n.t().badge }}</ar-pill>
+    @if (!iconsInBar()) {
+      <div class="social">
+        <a arIconButton icon="linkedin" [href]="links.linkedin" aria-label="LinkedIn"></a>
+        <a arIconButton icon="github" [href]="links.github" aria-label="GitHub"></a>
+      </div>
+    }
   </div>
 </div>

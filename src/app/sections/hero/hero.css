@@ -64,6 +64,20 @@
   text-transform: uppercase;
   color: var(--fg-3);
 }
+.bar-end {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.bar-social {
+  display: flex;
+  gap: 8px;
+  transition: opacity 300ms;
+}
+/* Con íconos de 32px la barra conserva su alto (~45px) */
+.bar.with-icons {
+  padding-block: 6px;
+}
 .body {
   display: flex;
   flex-direction: column;

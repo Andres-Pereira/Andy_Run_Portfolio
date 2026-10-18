@@ -58,14 +58,24 @@ export type IconName = 'linkedin' | 'github';
         color var(--dur-fast),
         transform var(--dur-fast);
     }
+    /* Compacto (32px): para la barra de título de la terminal en desktop */
+    :host(.sm) {
+      width: 32px;
+      height: 32px;
+    }
+    :host(.sm) svg {
+      width: 15px;
+      height: 15px;
+    }
     :host(:hover) {
       border-color: var(--flame);
       color: var(--flame);
       transform: translateY(-1px);
     }
   `,
-  host: { target: '_blank', rel: 'noopener noreferrer' },
+  host: { target: '_blank', rel: 'noopener noreferrer', '[class.sm]': "size() === 'sm'" },
 })
 export class IconButton {
   readonly icon = input.required<IconName>();
+  readonly size = input<'md' | 'sm'>('md');
 }

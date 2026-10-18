@@ -2,11 +2,13 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   Component,
   DestroyRef,
+  ElementRef,
   PLATFORM_ID,
   afterNextRender,
   computed,
   inject,
   signal,
+  viewChild,
 } from '@angular/core';
 import { LINKS } from '../../core/content/profile';
 import { I18nService } from '../../core/i18n/i18n.service';
@@ -18,6 +20,24 @@ import { Texture } from '../../ui/texture/texture';
 
 const CMD = 'Andy.Run';
 const LAST_STEP = 7;
+
+/** Ancho de los íconos sociales en la fila: 2 botones de 44px + gap de 10px. */
+const SOCIAL_WIDTH = 2 * 44 + 10;
+
+/**
+ * ¿Entran CTA + links + badge + íconos en una sola línea? En mobile (< 760px) siempre
+ * se dejan en la fila: ahí bajan a su propia línea, como en el mockup.
+ */
+export function socialFitsInRow(
+  rowWidth: number,
+  itemWidths: number[],
+  gap: number,
+  desktop: boolean,
+): boolean {
+  if (!desktop) return true;
+  const needed = itemWidths.reduce((a, b) => a + b, 0) + SOCIAL_WIDTH + gap * itemWidths.length;
+  return needed <= rowWidth;
+}
 
 /**
  * Ritmo del boot (ms). Más rápido que el prototipo (3.9s → ~2s) a pedido de Andy:
@@ -73,6 +93,14 @@ export class Hero {
   protected readonly typing = computed(() => this.step() < 1);
   protected readonly done = computed(() => this.step() >= LAST_STEP);
 
+  /** Íconos sociales en la barra de la terminal cuando no entran en la fila de acciones. */
+  protected readonly iconsInBar = signal(false);
+
+  private readonly actions = viewChild.required<ElementRef<HTMLElement>>('actions');
+  private readonly cta = viewChild.required('cta', { read: ElementRef<HTMLElement> });
+  private readonly paths = viewChild.required<ElementRef<HTMLElement>>('paths');
+  private readonly badge = viewChild.required('badge', { read: ElementRef<HTMLElement> });
+
   private timers: ReturnType<typeof setTimeout>[] = [];
   private removeScroll?: () => void;
 
@@ -82,6 +110,7 @@ export class Hero {
 
     // Tras la hidratación, para no cambiar el DOM mientras Angular lo reutiliza.
     afterNextRender(() => {
+      this.watchActionsRow(destroyRef);
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return this.skip();
 
       const onScroll = () => {
@@ -112,6 +141,27 @@ export class Hero {
     this.typed.set(CMD.length);
     this.step.set(LAST_STEP);
     this.runOn.set(!matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+
+  /** Mide la fila (y sus textos, que cambian con el idioma) y decide dónde van los íconos. */
+  private watchActionsRow(destroyRef: DestroyRef): void {
+    const desktop = matchMedia('(min-width: 760px)');
+    const row = this.actions().nativeElement;
+    const items = [this.cta(), this.paths(), this.badge()].map(
+      (r) => r.nativeElement as HTMLElement,
+    );
+    const update = () =>
+      this.iconsInBar.set(
+        !socialFitsInRow(
+          row.clientWidth,
+          items.map((e) => e.getBoundingClientRect().width),
+          parseFloat(getComputedStyle(row).columnGap) || 0,
+          desktop.matches,
+        ),
+      );
+    const observer = new ResizeObserver(update);
+    [row, ...items].forEach((e) => observer.observe(e));
+    destroyRef.onDestroy(() => observer.disconnect());
   }
 
   private clear(): void {
