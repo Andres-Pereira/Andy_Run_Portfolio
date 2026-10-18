@@ -40,7 +40,8 @@
         </div>
       </dl>
 
-      <h1 class="boot rise" [class.on]="step() >= 6">
+      <!-- Visible desde el primer render: es el LCP de la página (no se anima) -->
+      <h1>
         Building quality products.<br /><span class="flame">Shipping ASAP.</span>
         @if (done()) {
           <span class="cursor" aria-hidden="true"></span>

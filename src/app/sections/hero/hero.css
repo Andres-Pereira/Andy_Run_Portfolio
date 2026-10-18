@@ -181,15 +181,6 @@ h1 {
 .line.boot {
   transition: opacity 220ms;
 }
-.rise {
-  transform: translateY(14px);
-  transition:
-    opacity 420ms var(--ease-out),
-    transform 420ms var(--ease-out);
-}
-.rise.on {
-  transform: none;
-}
 .actions.boot {
   transition: opacity 300ms;
 }

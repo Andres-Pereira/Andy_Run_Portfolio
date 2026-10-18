@@ -32,7 +32,7 @@ export const BOOT = {
   beforeHeadline: 200, // paso 5 → headline (prototipo: 380)
 } as const;
 
-/** Paso 2–4 = data lines, 6 = headline, 7 = acciones. */
+/** Paso 2–4 = data lines, 7 = acciones y cursor del headline (el h1 ya es visible desde el render). */
 export function bootTimeline(): { at: number; typed?: number; runOn?: boolean; step?: number }[] {
   const events: { at: number; typed?: number; runOn?: boolean; step?: number }[] = [];
   let t = BOOT.start;

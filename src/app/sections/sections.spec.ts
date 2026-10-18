@@ -55,17 +55,19 @@ describe('Hero boot', () => {
     ]);
   });
 
-  it('keeps all copy in the DOM before the animation and reveals it on click', async () => {
+  it('keeps all copy in the DOM, shows the headline right away and reveals the rest on click', async () => {
     const fixture = TestBed.createComponent(Hero);
     await fixture.whenStable();
     const el = fixture.nativeElement as HTMLElement;
     expect(text(el.querySelector('h1'))).toBe('Building quality products.Shipping ASAP.');
-    expect(el.querySelector('h1')!.classList).not.toContain('on');
+    // El h1 es el LCP: visible desde el primer render, no participa del boot
+    expect(el.querySelector('h1')!.classList).not.toContain('boot');
+    expect(el.querySelector('.line')!.classList).not.toContain('on');
     expect(text(el.querySelector('.sr-only'))).toBe('Andy.Run');
 
     (el.querySelector('.terminal') as HTMLElement).click();
     fixture.detectChanges();
-    expect(el.querySelector('h1')!.classList).toContain('on');
+    expect(el.querySelector('.line')!.classList).toContain('on');
     expect(el.querySelector('.actions')!.classList).toContain('on');
     expect(text(el.querySelector('.typed'))).toBe('Andy.Run');
     expect(el.querySelector('ar-isotype')).not.toBeNull();
