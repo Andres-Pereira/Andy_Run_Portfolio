@@ -10,12 +10,22 @@ import { Projects } from './projects/projects';
 const text = (el: Element | null) => el?.textContent?.replace(/\s+/g, ' ').trim() ?? '';
 
 describe('App shell', () => {
+  it('starts with a skip link to the main content', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const el = fixture.nativeElement as HTMLElement;
+    const skip = el.querySelector('a.skip') as HTMLAnchorElement;
+    expect(el.querySelector('a, button')).toBe(skip);
+    expect(skip.getAttribute('href')).toBe('#main');
+    expect(el.querySelector('main#main')).not.toBeNull();
+  });
+
   it('renders every section in the handoff order', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const ids = [...fixture.nativeElement.querySelectorAll('[id]')]
       .map((e: Element) => e.id)
-      .filter((id: string) => !id.endsWith('-title'));
+      .filter((id: string) => !id.endsWith('-title') && id !== 'main');
     expect(ids).toEqual([
       'top',
       'about',
