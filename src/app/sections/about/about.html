@@ -1,0 +1,65 @@
+<section id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <ar-section-header
+      headingId="about-title"
+      [heading]="i18n.t().aTitle"
+      [intro]="i18n.t().aIntro"
+    />
+
+    <div class="cols">
+      <!-- Sample: placeholder hasta el retrato con luz de contorno -->
+      <figure class="portrait">
+        <figcaption>{{ i18n.t().photo }}</figcaption>
+      </figure>
+
+      <div class="right">
+        <div class="bio">
+          <ar-sample-tag />
+          <p class="bio1">{{ i18n.t().bio1 }}</p>
+          <p class="bio2">{{ i18n.t().bio2 }}</p>
+        </div>
+
+        <div class="stats">
+          <ar-card class="big" eyebrow="Sample · 01" glow>
+            <ar-stat
+              class="pad-lg"
+              [value]="stats.years.value"
+              [label]="i18n.t()[stats.years.label]"
+              size="lg"
+              sizeMobile="md"
+            />
+          </ar-card>
+          <ar-card class="tight" eyebrow="Sample · 02">
+            <ar-stat
+              class="pad-sm"
+              [value]="stats.projects.value"
+              [label]="i18n.t()[stats.projects.label]"
+              size="md"
+              sizeMobile="sm"
+            />
+          </ar-card>
+          <ar-card class="tight" eyebrow="Sample · 03">
+            <ar-stat
+              class="pad-sm"
+              [value]="stats.hours.value"
+              [label]="i18n.t()[stats.hours.label]"
+              size="md"
+              sizeMobile="sm"
+            />
+          </ar-card>
+
+          <div class="now">
+            <div class="now-main">
+              <ar-runner size="26px" [trail]="false" />
+              <div class="now-text">
+                <span class="now-label">{{ i18n.t().now }}</span>
+                <span class="now-role">{{ currently }}</span>
+              </div>
+            </div>
+            <span class="now-since">{{ i18n.t().since }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

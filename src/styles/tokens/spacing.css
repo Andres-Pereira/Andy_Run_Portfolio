@@ -1,0 +1,17 @@
+:root{
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px; --space-6:24px;
+  --space-7:32px; --space-8:48px; --space-9:64px; --space-10:96px; --space-11:140px;
+  --gutter:clamp(20px, 5vw, 72px); /* @kind spacing */
+  --section-y:clamp(80px, 10vw, 140px); /* @kind spacing */
+  --content-max:1280px;
+
+  --radius-xs:4px; --radius-sm:12px; --radius-md:16px; --radius-lg:20px; --radius-xl:24px; --radius-2xl:28px; --radius-3xl:32px; --radius-pill:999px;
+
+  --blur-glass:20px; /* @kind other */ --blur-pill:14px; /* @kind other */
+  --shadow-cta:0 10px 34px -8px rgba(255,90,31,0.7);
+  --shadow-glass-inset:inset 0 1px 0 rgba(244,239,232,0.14);
+  --shadow-glow:0 0 20px 2px rgba(255,196,107,0.8), 0 0 80px 16px rgba(255,90,31,0.5);
+
+  --ease-out:cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --dur-fast:140ms; /* @kind other */ --dur-base:220ms; /* @kind other */ --run-frame:110ms; /* @kind other */
+}

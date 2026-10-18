@@ -1,0 +1,13 @@
+:root{
+  /* Approved gradients — light always comes from below or behind */
+  --grad-ember-rise:radial-gradient(120% 80% at 50% 115%, #FFC46B 0%, #FF8A3D 14%, #FF5A1F 28%, #16213D 62%, #0B0A0C 88%); /* @kind color */
+  --grad-flame-core:radial-gradient(circle at 50% 45%, #FFC46B 0%, #FF8A3D 16%, #FF5A1F 32%, rgba(255,90,31,0.2) 52%, #0B0A0C 74%); /* @kind color */
+  --grad-midnight-depth:linear-gradient(165deg, #0B0A0C 15%, #16213D 58%, #FF5A1F 104%); /* @kind color */
+  --grad-bone-dawn:radial-gradient(130% 70% at 50% 120%, #FFC46B 0%, #FFE2B8 30%, #F4EFE8 62%); /* @kind color */
+  --grad-ember-grain:linear-gradient(180deg, #0B0A0C 0%, #16213D 45%, #FF5A1F 88%, #FF8A3D 100%); /* @kind color */
+  --grad-molten:radial-gradient(70% 60% at 100% 0%, rgba(255,90,31,0.75), transparent 62%), radial-gradient(90% 75% at 0% 100%, #FFC46B, #FF8A3D 22%, #FF5A1F 42%, transparent 72%), radial-gradient(60% 60% at 60% 60%, #16213D, transparent 70%), #0B0A0C; /* @kind color */
+  --grad-glass:linear-gradient(160deg, rgba(244,239,232,0.12), rgba(244,239,232,0.03)); /* @kind color */
+  --edge-light:linear-gradient(90deg, transparent, #FFC46B 50%, transparent); /* @kind color */
+  /* Film grain (overlay at 35–85% opacity, mix-blend-mode:overlay) */
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); /* @kind other */
+}

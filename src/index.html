@@ -1,13 +1,33 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>AndyRun</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Andy.Run · Andrés Pereira, Full-Stack .NET Developer</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0B0A0C" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="preload" href="/fonts/Geist-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Geist-600.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GeistMono-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <!-- Sin JS no corre el boot del hero: mostrar su estado final -->
+    <noscript>
+      <style>
+        .boot {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        .typed {
+          display: none !important;
+        }
+        .nojs {
+          display: inline !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>

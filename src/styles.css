@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+/* Andy.Run — tokens del design system (_ds/…/tokens) portados como CSS custom properties */
+@import './styles/tokens/fonts.css';
+@import './styles/tokens/colors.css';
+@import './styles/tokens/gradients.css';
+@import './styles/tokens/typography.css';
+@import './styles/tokens/spacing.css';
+@import './styles/tokens/layout.css';
+@import './styles/base.css';

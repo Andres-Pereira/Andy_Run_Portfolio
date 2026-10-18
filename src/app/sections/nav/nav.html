@@ -1,0 +1,37 @@
+<nav [attr.aria-label]="i18n.lang() === 'es' ? 'Principal' : 'Main'">
+  <a href="#top" class="brand"><ar-wordmark [size]="24" /></a>
+
+  <ul class="links">
+    <li>
+      <a href="#about">{{ i18n.t().nAbout }}</a>
+    </li>
+    <li>
+      <a href="#experience">{{ i18n.t().nExp }}</a>
+    </li>
+    <li>
+      <a href="#projects">{{ i18n.t().nProj }}</a>
+    </li>
+    <li>
+      <a href="#services">{{ i18n.t().nServ }}</a>
+    </li>
+    <li>
+      <a href="#contact">{{ i18n.t().nContact }}</a>
+    </li>
+  </ul>
+
+  <div class="end">
+    <div class="lang" role="group" aria-label="Language / Idioma">
+      @for (l of langs; track l) {
+        <button
+          type="button"
+          [attr.aria-pressed]="i18n.lang() === l"
+          [attr.lang]="l"
+          (click)="i18n.setLang(l)"
+        >
+          {{ l.toUpperCase() }}
+        </button>
+      }
+    </div>
+    <a arButton size="sm" href="#contact" arrow class="cta">{{ i18n.t().cta }}</a>
+  </div>
+</nav>

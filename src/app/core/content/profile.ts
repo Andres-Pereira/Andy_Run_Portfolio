@@ -1,0 +1,25 @@
+import { Client, Stat } from './types';
+
+// Links y datos de contacto. Sample: los reemplaza Andy antes del lanzamiento.
+export const LINKS = {
+  email: 'hello@andy.run', // Sample
+  linkedin: 'https://www.linkedin.com/', // Sample
+  linkedinHandle: '/in/andres-pereira', // Sample
+  github: 'https://github.com/', // Sample
+  calendar: 'https://calendar.google.com/', // Sample: URL de citas pendiente
+  cv: '#cv', // PDF pendiente (un solo CV, en inglés)
+  servicesPdf: '#services-pdf', // PDF pendiente
+} as const;
+
+// About › stats (Sample).
+export const STATS: { years: Stat; projects: Stat; hours: Stat } = {
+  years: { value: '6+', label: 'years', sample: true },
+  projects: { value: '30+', label: 'projects', sample: true },
+  hours: { value: '1.2k', label: 'hours', sample: true },
+};
+
+// Franja "Currently" del About.
+export const CURRENTLY = 'Full-Stack .NET Developer · Meta-DAO';
+
+// Clients: 8 logos placeholder.
+export const CLIENTS: Client[] = Array.from({ length: 8 }, () => ({ sample: true }));

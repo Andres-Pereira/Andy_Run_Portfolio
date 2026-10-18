@@ -1,0 +1,65 @@
+<div class="bg" aria-hidden="true">
+  <div class="tex"><ar-texture variant="fluted-ring" /></div>
+  <div class="veil"></div>
+</div>
+
+<div class="wrap">
+  <div class="terminal" (click)="skip()">
+    <div class="edge" aria-hidden="true"></div>
+    <div class="bar" aria-hidden="true"><span>~/andy.run</span><span>portfolio · 2026</span></div>
+
+    <div class="body">
+      <p class="cmd">
+        <span class="prompt" aria-hidden="true">&gt;</span>
+        <span class="sr-only">Andy.Run</span>
+        <span class="typed" aria-hidden="true"
+          ><span>{{ cmdA() }}</span
+          ><span class="run">{{ cmdB() }}</span></span
+        >
+        <span class="nojs" aria-hidden="true">Andy<span class="run">.Run</span></span>
+        @if (showIso()) {
+          <ar-isotype [running]="runOn()" />
+        }
+        @if (typing()) {
+          <span class="cursor" aria-hidden="true"></span>
+        }
+      </p>
+
+      <dl class="data">
+        <div class="line boot" [class.on]="step() >= 2">
+          <dt>(whoami)</dt>
+          <dd class="name">Andrés Pereira</dd>
+        </div>
+        <div class="line boot" [class.on]="step() >= 3">
+          <dt>({{ i18n.t().kRole }})</dt>
+          <dd class="role">{{ i18n.t().sub }}</dd>
+        </div>
+        <div class="line boot" [class.on]="step() >= 4">
+          <dt>(stack)</dt>
+          <dd class="stack">C# · .NET · Blazor · Angular · SQL Server · AI agents</dd>
+        </div>
+      </dl>
+
+      <h1 class="boot rise" [class.on]="step() >= 6">
+        Building quality products.<br /><span class="flame">Shipping ASAP.</span>
+        @if (done()) {
+          <span class="cursor" aria-hidden="true"></span>
+        }
+      </h1>
+    </div>
+  </div>
+
+  <div class="actions boot" [class.on]="step() >= 7">
+    <a arButton size="lg" href="#contact" arrow class="cta">{{ i18n.t().cta }}</a>
+    <div class="paths">
+      <a href="#experience">{{ i18n.t().hiring }}</a>
+      <span aria-hidden="true">·</span>
+      <a href="#projects">{{ i18n.t().needsw }}</a>
+    </div>
+    <ar-pill variant="accent" dot>{{ i18n.t().badge }}</ar-pill>
+    <div class="social">
+      <a arIconButton icon="linkedin" [href]="links.linkedin" aria-label="LinkedIn"></a>
+      <a arIconButton icon="github" [href]="links.github" aria-label="GitHub"></a>
+    </div>
+  </div>
+</div>

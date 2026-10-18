@@ -1,0 +1,125 @@
+section {
+  padding: var(--section-y) var(--gutter);
+  border-top: 1px solid var(--border-1);
+}
+
+.wrap {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 72px);
+}
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.head > div,
+.bottom > div {
+  display: flex;
+}
+
+/* Desktop: grid auto-fit (4 columnas a 1280) */
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px;
+  border-radius: var(--radius-xl);
+  background: var(--carbon);
+  border: 1px solid var(--border-1);
+  scroll-snap-align: start;
+  transition:
+    border-color var(--dur-fast),
+    transform var(--dur-base) var(--ease-out);
+}
+.card:hover {
+  border-color: var(--border-3);
+  transform: translateY(-3px);
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.idx {
+  font: 500 12px/1 var(--font-code);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--flame);
+}
+h3 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+.top p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.examples li {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-1);
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--bone);
+}
+.examples span {
+  color: var(--flame);
+}
+
+.bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.time {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.time-label {
+  font: 500 11px/1 var(--font-code);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+.time-value {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Mobile: carrusel con snap que sangra hasta los bordes de la pantalla */
+@media (max-width: 759.98px) {
+  .list {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--gutter);
+    scrollbar-width: none;
+    margin: 0 calc(var(--gutter) * -1);
+    padding: 0 var(--gutter);
+  }
+  .list::-webkit-scrollbar {
+    display: none;
+  }
+  .card {
+    flex: 0 0 84%;
+  }
+}

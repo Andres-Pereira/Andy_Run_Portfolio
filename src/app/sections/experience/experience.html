@@ -1,0 +1,97 @@
+@let t = i18n.t();
+<section id="experience" aria-labelledby="experience-title">
+  <div class="wrap">
+    <div class="head">
+      <ar-section-header headingId="experience-title" [heading]="t.eTitle" />
+      <div>
+        <a arButton [href]="links.cv">{{ t.cv }}</a>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div class="jobs">
+        <h3 class="col-label">{{ t.expLabel }}</h3>
+        @for (job of jobs; track $index) {
+          <article class="job">
+            <div class="dates">
+              <span>{{ i18n.pick(job.dates) }}</span>
+              @if (job.current) {
+                <span class="now"
+                  ><span class="dot" aria-hidden="true"></span>{{ t.nowShort }}</span
+                >
+              }
+            </div>
+            <div class="title">
+              <h4>{{ i18n.pick(job.role) }}</h4>
+              <span class="co">· {{ i18n.pick(job.company) }}</span>
+            </div>
+            <p class="desc">
+              @if (job.sample) {
+                <ar-sample-tag class="inline" />
+              }
+              {{ i18n.pick(job.desc) }}
+            </p>
+            <ul class="stack">
+              @for (s of job.stack; track s) {
+                <li>
+                  <ar-pill>{{ s }}</ar-pill>
+                </li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+
+      <div class="studies">
+        <h3 class="col-label">{{ t.eduLabel }}</h3>
+
+        <ar-card [eyebrow]="t.eduDegree" [heading]="t.eduSys">
+          <div class="degree">
+            <span class="bone">{{ studies.degree.institution }}</span>
+            <span class="mono"
+              >{{ studies.degree.years }}
+              @if (studies.degree.sample) {
+                · Sample
+              }
+            </span>
+          </div>
+        </ar-card>
+
+        <ar-card [eyebrow]="t.eduDipl" [heading]="t.eduUx">
+          <span class="mono"
+            >{{ t.institution }} · {{ studies.diploma.years }}
+            @if (studies.diploma.sample) {
+              · Sample
+            }
+          </span>
+        </ar-card>
+
+        <ar-card [eyebrow]="t.certs">
+          <ul class="rows">
+            @for (c of studies.certifications; track $index) {
+              <li>
+                <span class="bone">{{ c.name ? i18n.pick(c.name) : t.certName }}</span>
+                @if (c.sample) {
+                  <span class="mono">Sample</span>
+                }
+              </li>
+            }
+          </ul>
+        </ar-card>
+
+        <ar-card [eyebrow]="t.langs">
+          <ul class="rows">
+            <li>
+              <span class="bone">{{ t.english }}</span
+              ><span class="level">{{ studies.englishLevel }}</span>
+            </li>
+            <li>
+              <span class="bone">{{ t.spanish }}</span
+              ><span class="level">{{ t.native }}</span>
+            </li>
+          </ul>
+        </ar-card>
+      </div>
+    </div>
+  </div>
+</section>

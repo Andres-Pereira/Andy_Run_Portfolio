@@ -1,0 +1,38 @@
+:root{
+  /* Palette "Ember" */
+  --ink:#0B0A0C;       /* main background, warm black — never #000 */
+  --carbon:#1C1B20;    /* surfaces, cards */
+  --ember:#FF5A1F;     /* primary accent */
+  --flame:#FF8A3D;     /* secondary accent, gradients */
+  --glow:#FFC46B;      /* light cores, highlights */
+  --midnight:#16213D;  /* depth inside shadows/gradients, cool accent */
+  --bone:#F4EFE8;      /* text on dark, light background */
+  --burnt:#C2410C;     /* small accent text on Bone (4.5:1) — sober mode only */
+  --paper-shadow:#2a282e;
+
+  /* Semantic — expressive (dark) mode */
+  --bg:var(--ink);
+  --surface:var(--carbon);
+  --fg-1:var(--bone);
+  --fg-2:rgba(244,239,232,0.72);
+  --fg-3:rgba(244,239,232,0.55);
+  --accent:var(--ember);
+  --accent-2:var(--flame);
+  --highlight:var(--glow);
+  --on-accent:var(--ink);
+  --border-1:rgba(244,239,232,0.08);
+  --border-2:rgba(244,239,232,0.14);
+  --border-3:rgba(244,239,232,0.22);
+  --glass-fill:rgba(244,239,232,0.08);
+  --glass-border:rgba(244,239,232,0.18);
+  --accent-fill:rgba(255,90,31,0.16);
+  --accent-border:rgba(255,138,61,0.5);
+
+  /* Semantic — sober (light / print) mode */
+  --sober-bg:var(--bone);
+  --sober-fg-1:var(--ink);
+  --sober-fg-2:#3a3740;
+  --sober-accent-text:var(--burnt);
+  --sober-rule:var(--ember);
+}
+.mode-sober{--bg:var(--bone);--surface:#FFFFFF;--fg-1:var(--ink);--fg-2:#3a3740;--fg-3:#5a5660;--border-1:rgba(11,10,12,0.08);--border-2:rgba(11,10,12,0.15);--border-3:rgba(11,10,12,0.3)}

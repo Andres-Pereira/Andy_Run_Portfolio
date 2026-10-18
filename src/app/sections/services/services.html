@@ -1,0 +1,42 @@
+@let t = i18n.t();
+<section id="services" aria-labelledby="services-title">
+  <div class="wrap">
+    <div class="head">
+      <ar-section-header headingId="services-title" [heading]="t.sTitle" [intro]="t.sIntro" />
+      <div>
+        <a arButton variant="glass" [href]="links.servicesPdf">{{ t.pdf }}</a>
+      </div>
+    </div>
+
+    <ul class="list">
+      @for (s of services; track s.index) {
+        <li class="card">
+          <div class="top">
+            <span class="idx">{{ s.index }}</span>
+            <h3>{{ i18n.pick(s.title) }}</h3>
+            <p>{{ i18n.pick(s.desc) }}</p>
+          </div>
+          <ul class="examples">
+            @for (e of s.examples; track e.en) {
+              <li><span aria-hidden="true">·</span>{{ i18n.pick(e) }}</li>
+            }
+          </ul>
+          <div class="bottom">
+            <div class="time">
+              <span class="time-label"
+                >{{ t.time }}
+                @if (s.sample) {
+                  · Sample
+                }
+              </span>
+              <span class="time-value">{{ i18n.pick(s.time) }}</span>
+            </div>
+            <div>
+              <a arButton variant="glass" href="#contact" arrow>{{ t.cta }}</a>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

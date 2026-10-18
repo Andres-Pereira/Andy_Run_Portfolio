@@ -1,0 +1,77 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: block;
+  background: rgba(11, 10, 12, 0.8);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 14px var(--gutter);
+}
+
+.brand {
+  display: flex;
+}
+
+.links {
+  display: flex;
+  gap: 28px;
+  font-size: 14px;
+}
+
+.links a {
+  color: var(--fg-2);
+  transition: color var(--dur-fast);
+}
+
+.links a:hover {
+  color: var(--bone);
+}
+
+.end {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-2);
+  font: 500 12px/1 var(--font-code);
+  letter-spacing: var(--tr-label);
+}
+
+.lang button {
+  height: 36px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  letter-spacing: inherit;
+  background: transparent;
+  color: var(--fg-2);
+  transition: background var(--dur-fast);
+}
+
+.lang button[aria-pressed='true'] {
+  background: var(--bone);
+  color: var(--ink);
+}
+
+@media (max-width: 759.98px) {
+  .links,
+  .cta {
+    display: none;
+  }
+}

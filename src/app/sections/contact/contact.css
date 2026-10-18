@@ -1,0 +1,189 @@
+section {
+  position: relative;
+  overflow: hidden;
+  padding: var(--section-y) var(--gutter) clamp(120px, 14vw, 200px);
+}
+
+/* Ember Rise se extiende 40% bajo la sección: la luz más intensa queda abajo */
+.bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: -40%;
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(40px, 5vw, 72px);
+  align-items: center;
+}
+
+.intro {
+  flex: 1 1 440px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.intro > div {
+  display: flex;
+}
+h2 {
+  font-size: clamp(44px, 6vw, 88px);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+  text-wrap: balance;
+}
+.intro > p {
+  max-width: 480px;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.reach {
+  max-width: 480px;
+  border-top: 1px solid var(--border-2);
+}
+.reach a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-2);
+  color: var(--bone);
+  transition: color var(--dur-fast);
+}
+.reach a:hover {
+  color: var(--glow);
+}
+.v {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.k {
+  font: 500 12px/1 var(--font-code);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+/* Form card */
+.panel {
+  flex: 1 1 420px;
+  min-width: 0;
+  padding: clamp(22px, 3vw, 36px);
+  border-radius: var(--radius-xl);
+  background: var(--carbon);
+  border: 1px solid var(--border-2);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+input,
+textarea {
+  padding: 0 16px;
+  border-radius: var(--radius-sm);
+  background: var(--ink);
+  border: 1px solid var(--border-2);
+  color: var(--bone);
+  font: 400 16px var(--font-sans);
+  outline: none;
+  transition:
+    border-color var(--dur-fast),
+    box-shadow var(--dur-fast);
+}
+input {
+  height: 52px;
+}
+textarea {
+  padding: 14px 16px;
+  line-height: 1.5;
+  resize: vertical;
+}
+input:focus,
+textarea:focus {
+  border-color: var(--ember);
+  box-shadow: var(--ring-focus);
+}
+
+.error {
+  font-size: 14px;
+  color: var(--glow);
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 62px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--ember);
+  color: var(--ink);
+  font: 600 18px var(--font-sans);
+  letter-spacing: -0.01em;
+  box-shadow: var(--shadow-cta);
+  transition:
+    background var(--dur-fast),
+    transform var(--dur-fast);
+}
+.send:hover {
+  background: var(--flame);
+  transform: translateY(-1px);
+}
+.hint {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg-2);
+}
+
+/* Estado de éxito */
+.thanks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px 0;
+}
+.thanks h3 {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  outline: none;
+}
+.thanks p {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--fg-2);
+}
+.again {
+  padding: 10px 0;
+  border: 0;
+  background: none;
+  color: var(--flame);
+  font: 500 15px var(--font-sans);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.again:hover {
+  color: var(--glow);
+}

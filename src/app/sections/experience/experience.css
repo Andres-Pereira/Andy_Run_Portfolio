@@ -1,0 +1,149 @@
+section {
+  padding: var(--section-y) var(--gutter);
+  border-top: 1px solid var(--border-1);
+}
+
+.wrap {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 5vw, 72px);
+}
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.head > div {
+  display: flex;
+}
+
+.cols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(32px, 4vw, 56px);
+  align-items: flex-start;
+}
+
+.col-label {
+  font: 500 12px/1 var(--font-code);
+  letter-spacing: var(--tr-label);
+  text-transform: uppercase;
+  color: var(--flame);
+}
+
+/* Experiencia */
+.jobs {
+  flex: 1 1 560px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.jobs .col-label {
+  padding-bottom: 18px;
+}
+.job {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 16px;
+  margin: 0 -16px;
+  border-top: 1px solid var(--border-1);
+  border-radius: var(--radius-md);
+  transition: background var(--dur-fast);
+}
+.job:hover {
+  background: rgba(244, 239, 232, 0.03);
+}
+.dates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  font: 500 13px/1 var(--font-code);
+  letter-spacing: 0.02em;
+  color: var(--fg-2);
+}
+.now {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--glow);
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--glow);
+  box-shadow: 0 0 8px var(--glow);
+}
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+}
+h4 {
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.co {
+  font-size: 18px;
+  color: var(--fg-2);
+}
+.desc {
+  max-width: 620px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Estudios */
+.studies {
+  flex: 1 1 380px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.studies .col-label {
+  padding-bottom: 6px;
+}
+.degree {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bone {
+  color: var(--bone);
+}
+.mono {
+  font: 500 13px/1.5 var(--font-code);
+  color: var(--fg-2);
+}
+.rows li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+.rows li + li {
+  border-top: 1px solid var(--border-1);
+}
+.rows .mono {
+  color: inherit;
+}
+.level {
+  font: 500 13px/1 var(--font-code);
+  color: var(--glow);
+}

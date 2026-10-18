@@ -1,0 +1,74 @@
+@let t = i18n.t();
+<section id="projects" aria-labelledby="projects-title">
+  <div class="wrap">
+    <ar-section-header headingId="projects-title" [heading]="t.pTitle" [intro]="t.pIntro" />
+
+    <div class="controls">
+      <div class="filters" role="group" [attr.aria-label]="t.nProj">
+        @for (f of filters(); track f.id) {
+          <button type="button" [attr.aria-pressed]="filter() === f.id" (click)="pick(f.id)">
+            {{ t[f.label] }}<span class="count">{{ f.count }}</span>
+          </button>
+        }
+      </div>
+      <div class="arrows">
+        <button type="button" [attr.aria-label]="t.prev" (click)="scroll(-1)">←</button>
+        <button type="button" [attr.aria-label]="t.next" (click)="scroll(1)">→</button>
+      </div>
+    </div>
+  </div>
+
+  <div #track class="track" tabindex="0" role="region" [attr.aria-label]="t.pTitle">
+    @for (p of projects(); track p.title.en) {
+      <article class="card">
+        <div class="shot">
+          <span>{{ t.shot }}</span>
+        </div>
+        <div class="content">
+          <span class="type"
+            >{{ t[typeLabel[p.type]] }}
+            @if (p.sample) {
+              · Sample
+            }
+          </span>
+          <h3>{{ i18n.pick(p.title) }}</h3>
+          <p>{{ i18n.pick(p.desc) }}</p>
+          <ul class="stack">
+            @for (s of p.stack; track s) {
+              <li>
+                <ar-pill>{{ s }}</ar-pill>
+              </li>
+            }
+          </ul>
+          @if (p.github || p.demo) {
+            <div class="links">
+              @if (p.github) {
+                <a
+                  arButton
+                  variant="glass"
+                  size="sm"
+                  [href]="p.github"
+                  [attr.target]="external(p.github)"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              }
+              @if (p.demo) {
+                <a
+                  arButton
+                  variant="glass"
+                  size="sm"
+                  [href]="p.demo"
+                  [attr.target]="external(p.demo)"
+                  rel="noopener noreferrer"
+                  arrow
+                  >Live demo</a
+                >
+              }
+            </div>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>

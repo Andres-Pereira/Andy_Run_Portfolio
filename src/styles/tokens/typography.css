@@ -1,0 +1,20 @@
+:root{
+  --font-sans:'Geist', system-ui, sans-serif;     /* everything by default */
+  --font-data:'Departure Mono', 'Geist Mono', monospace; /* giant numbers, stats, hero accents ONLY */
+  --font-code:'Geist Mono', ui-monospace, monospace;      /* code snippets, technical labels */
+
+  /* Web scale */
+  --type-display:clamp(56px, 11vw, 160px); --lh-display:0.88; /* @kind font */ --tr-display:-0.06em; /* @kind font */
+  --type-h1:clamp(44px, 7vw, 96px);        --lh-h1:0.92; /* @kind font */      --tr-h1:-0.05em; /* @kind font */
+  --type-h2:clamp(34px, 4.5vw, 56px);      --lh-h2:1; /* @kind font */         --tr-h2:-0.04em; /* @kind font */
+  --type-h3:32px;                          --lh-h3:1.1; /* @kind font */       --tr-h3:-0.03em; /* @kind font */
+  --type-body-l:20px;                      --lh-body-l:1.5; /* @kind font */
+  --type-body:16px;                        --lh-body:1.6; /* @kind font */
+  --type-small:14px;                       --lh-small:1.55; /* @kind font */
+  --type-label:12px;                       --tr-label:0.06em; /* @kind font */  /* Geist Mono, uppercase */
+  --type-data:clamp(64px, 9vw, 120px);     --lh-data:0.85; /* @kind font */
+  --weight-regular:400; /* @kind font */ --weight-medium:500; /* @kind font */ --weight-semibold:600; /* @kind font */ --weight-bold:700; /* @kind font */
+
+  /* Wordmark */
+  --wordmark-tracking:-0.055em; /* @kind font */ --wordmark-weight:600; /* @kind font */ --runner-box:0.78em; /* @kind font */
+}
