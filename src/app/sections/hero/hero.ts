@@ -20,24 +20,33 @@ const CMD = 'Andy.Run';
 const LAST_STEP = 7;
 
 /**
- * Secuencia de boot del prototipo (ms desde la carga):
- * 500 empieza a escribir · +80 por carácter · isotype corre · +1320 paso 1 · +260 paso 2
- * · pasos 3–7 cada 200ms (380ms tras el 5). Paso 2–4 = data lines, 6 = headline, 7 = acciones.
+ * Ritmo del boot (ms). Más rápido que el prototipo (3.9s → ~2s) a pedido de Andy:
+ * los pasos (140ms) son más cortos que las transiciones (220–420ms), así que se solapan y fluyen.
  */
+export const BOOT = {
+  start: 300, // espera antes de escribir (prototipo: 500)
+  perChar: 55, // por carácter de "Andy.Run" (prototipo: 80)
+  afterTyping: 350, // isotype corriendo → paso 1 (prototipo: 1320)
+  firstStep: 100, // paso 1 → paso 2 (prototipo: 260)
+  perStep: 140, // entre pasos 2–7 (prototipo: 200)
+  beforeHeadline: 200, // paso 5 → headline (prototipo: 380)
+} as const;
+
+/** Paso 2–4 = data lines, 6 = headline, 7 = acciones. */
 export function bootTimeline(): { at: number; typed?: number; runOn?: boolean; step?: number }[] {
   const events: { at: number; typed?: number; runOn?: boolean; step?: number }[] = [];
-  let t = 500;
+  let t = BOOT.start;
   for (let i = 1; i <= CMD.length; i++) {
     events.push({ at: t, typed: i });
-    t += 80;
+    t += BOOT.perChar;
   }
   events.push({ at: t, runOn: true });
-  t += 1320;
+  t += BOOT.afterTyping;
   events.push({ at: t, step: 1 });
-  t += 260;
+  t += BOOT.firstStep;
   for (let s = 2; s <= LAST_STEP; s++) {
     events.push({ at: t, step: s });
-    t += s === 5 ? 380 : 200;
+    t += s === 5 ? BOOT.beforeHeadline : BOOT.perStep;
   }
   return events;
 }

@@ -26,19 +26,19 @@ describe('App shell', () => {
 });
 
 describe('Hero boot', () => {
-  it('follows the prototype timeline', () => {
+  it('types, starts the runner and reveals the steps in order in about 2 seconds', () => {
     const t = bootTimeline();
-    expect(t[0]).toEqual({ at: 500, typed: 1 });
-    expect(t.find((e) => e.typed === 8)?.at).toBe(1060);
-    expect(t.find((e) => e.runOn)?.at).toBe(1140);
+    expect(t[0]).toEqual({ at: 300, typed: 1 });
+    expect(t.find((e) => e.typed === 8)?.at).toBe(685);
+    expect(t.find((e) => e.runOn)?.at).toBe(740);
     expect(t.filter((e) => e.step).map((e) => [e.step, e.at])).toEqual([
-      [1, 2460],
-      [2, 2720],
-      [3, 2920],
-      [4, 3120],
-      [5, 3320],
-      [6, 3700],
-      [7, 3900],
+      [1, 1090],
+      [2, 1190],
+      [3, 1330],
+      [4, 1470],
+      [5, 1610],
+      [6, 1810],
+      [7, 1950],
     ]);
   });
 
