@@ -4,7 +4,13 @@
     <div class="head">
       <ar-section-header headingId="services-title" [heading]="t.sTitle" [intro]="t.sIntro" />
       <div>
-        <a arButton variant="glass" [href]="links.servicesPdf">{{ t.pdf }}</a>
+        <a
+          arButton
+          icon="download"
+          [href]="links.servicesPdf"
+          [attr.download]="downloadName(links.servicesPdf)"
+          >{{ t.pdf }}</a
+        >
       </div>
     </div>
 

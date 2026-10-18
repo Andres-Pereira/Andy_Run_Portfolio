@@ -21,6 +21,13 @@ export const LINKS = {
   servicesPdf: '#services-pdf', // PDF pendiente
 } as const;
 
+/**
+ * Nombre de archivo para el atributo `download`, solo si el link es un PDF real
+ * (los PDFs viven en public/files/ y se sirven como /files/<nombre>.pdf).
+ */
+export const downloadName = (href: string): string | null =>
+  /\.pdf$/i.test(href) ? (href.split('/').pop() ?? null) : null;
+
 // About › stats (Sample).
 export const STATS: { years: Stat; projects: Stat; hours: Stat } = {
   years: { value: '6+', label: 'years', sample: true },

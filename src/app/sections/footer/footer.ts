@@ -39,6 +39,12 @@ import { Wordmark } from '../../ui/wordmark/wordmark';
       font-size: 14px;
       color: var(--fg-2);
     }
+    /* QA de Andy: en mobile el slogan aprieta el footer */
+    @media (max-width: 759.98px) {
+      .tagline {
+        display: none;
+      }
+    }
     small {
       font: 500 12px/1 var(--font-code);
       letter-spacing: var(--tr-label);

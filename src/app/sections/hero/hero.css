@@ -2,7 +2,8 @@
   position: relative;
   display: block;
   overflow: hidden;
-  padding: clamp(32px, 6vw, 96px) var(--gutter) clamp(72px, 9vw, 140px);
+  /* QA de Andy: menos aire arriba que el mockup (clamp(32px, 6vw, 96px)) para que la terminal entre completa */
+  padding: clamp(16px, 2.2vw, 40px) var(--gutter) clamp(72px, 9vw, 140px);
   scroll-margin-top: var(--nav-offset);
 }
 
@@ -248,8 +249,9 @@ h1 {
       #0b0a0c 52%
     );
   }
+  /* QA de Andy: la terminal sube (mockup: 34vw) para que el hero entero entre en la primera vista */
   .terminal {
-    margin-top: 34vw;
+    margin-top: 12vw;
   }
   .cta {
     width: 100%;

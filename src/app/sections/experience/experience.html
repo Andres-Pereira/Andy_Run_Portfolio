@@ -4,7 +4,9 @@
     <div class="head">
       <ar-section-header headingId="experience-title" [heading]="t.eTitle" />
       <div>
-        <a arButton [href]="links.cv">{{ t.cv }}</a>
+        <a arButton icon="download" [href]="links.cv" [attr.download]="downloadName(links.cv)">{{
+          t.cv
+        }}</a>
       </div>
     </div>
 

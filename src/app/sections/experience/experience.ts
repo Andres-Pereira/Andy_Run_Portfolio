@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { JOBS, STUDIES } from '../../core/content/experience';
-import { LINKS } from '../../core/content/profile';
+import { LINKS, downloadName } from '../../core/content/profile';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { Button } from '../../ui/button/button';
 import { Card } from '../../ui/card/card';
@@ -19,4 +19,5 @@ export class Experience {
   protected readonly jobs = JOBS;
   protected readonly studies = STUDIES;
   protected readonly links = LINKS;
+  protected readonly downloadName = downloadName;
 }

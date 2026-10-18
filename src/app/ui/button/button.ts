@@ -2,14 +2,33 @@ import { Component, input } from '@angular/core';
 
 export type ButtonVariant = 'primary' | 'glass';
 export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonIcon = 'download';
 
 /**
  * Botón pill del DS sobre el elemento nativo:
  *   <a arButton href="#contact" arrow>…</a>   ·   <button arButton type="submit">…</button>
+ * `icon` agrega un ícono Lucide antes del texto (adición pedida en QA: descargas).
  */
 @Component({
   selector: 'a[arButton], button[arButton]',
-  template: `<ng-content />
+  template: `@if (icon() === 'download') {
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M12 15V3" />
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <path d="m7 10 5 5 5-5" />
+      </svg>
+    }
+    <ng-content />
     @if (arrow()) {
       <span aria-hidden="true">→</span>
     }`,
@@ -31,6 +50,11 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
         background var(--dur-fast),
         color var(--dur-fast),
         transform var(--dur-fast);
+    }
+    .icon {
+      width: 1.15em;
+      height: 1.15em;
+      flex: none;
     }
     :host(:hover) {
       transform: translateY(-1px);
@@ -86,5 +110,6 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
 export class Button {
   readonly variant = input<ButtonVariant>('primary');
   readonly size = input<ButtonSize>('md');
+  readonly icon = input<ButtonIcon>();
   readonly arrow = input(false, { transform: (v: boolean | '') => v !== false });
 }
