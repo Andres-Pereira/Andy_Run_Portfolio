@@ -257,3 +257,37 @@ h1 {
     width: 100%;
   }
 }
+
+/*
+ * Desktop: el hero completo (terminal + fila del CTA) debe entrar en la primera pantalla.
+ * Cada medida es el menor entre su valor por ancho (el del mockup) y uno por alto visible (svh):
+ * en pantallas altas (1440×900) no cambia nada; en pantallas bajas la terminal se compacta.
+ */
+@media (min-width: 760px) {
+  :host {
+    padding-top: clamp(12px, min(2.2vw, 2.6svh), 40px);
+  }
+  .wrap {
+    gap: clamp(14px, 3svh, 28px);
+  }
+  .body {
+    gap: clamp(12px, min(2.4vw, 2.6svh), 30px);
+    padding-block: clamp(14px, min(3vw, 3.4svh), 40px);
+  }
+  .cmd {
+    font-size: clamp(26px, min(3.6vw, 6svh), 52px);
+  }
+  .data {
+    gap: clamp(6px, 1.5svh, 14px);
+  }
+  .name {
+    font-size: clamp(22px, min(3vw, 4.6svh), 40px);
+  }
+  .role {
+    font-size: clamp(16px, min(1.7vw, 3.2svh), 23px);
+  }
+  h1 {
+    padding-top: clamp(10px, min(2vw, 2.4svh), 26px);
+    font-size: clamp(32px, min(5vw, 8.4svh), 72px);
+  }
+}
