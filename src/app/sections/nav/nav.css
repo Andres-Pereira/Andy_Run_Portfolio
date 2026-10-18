@@ -28,6 +28,7 @@ nav {
 }
 
 .links a {
+  white-space: nowrap;
   color: var(--fg-2);
   transition: color var(--dur-fast);
 }
@@ -53,6 +54,7 @@ nav {
 }
 
 .lang button {
+  position: relative;
   height: 36px;
   padding: 0 13px;
   border: 0;
@@ -64,13 +66,27 @@ nav {
   transition: background var(--dur-fast);
 }
 
+/* Se ve de 36px (mockup) pero el área táctil llega a 44px de alto */
+.lang button::after {
+  content: '';
+  position: absolute;
+  inset: -4px 0;
+}
+
 .lang button[aria-pressed='true'] {
   background: var(--bone);
   color: var(--ink);
 }
 
+/* Los 5 links no caben con el CTA por debajo de ~900px (en ES): se muestran desde 960px.
+   Entre 760 y 959px la nav queda con logo, toggle y CTA. */
+@media (max-width: 959.98px) {
+  .links {
+    display: none;
+  }
+}
+
 @media (max-width: 759.98px) {
-  .links,
   .cta {
     display: none;
   }

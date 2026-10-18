@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { I18nService } from './core/i18n/i18n.service';
 import { About } from './sections/about/about';
 import { Clients } from './sections/clients/clients';
 import { Contact } from './sections/contact/contact';
@@ -14,8 +15,10 @@ import { Services } from './sections/services/services';
   selector: 'app-root',
   imports: [About, Clients, Contact, Experience, Footer, Hero, Nav, Projects, Services],
   template: `
+    <!-- Skip link: invisible hasta recibir foco con Tab -->
+    <a class="skip" href="#main">{{ i18n.t().skip }}</a>
     <ar-nav />
-    <main>
+    <main id="main" tabindex="-1">
       <ar-hero />
       <ar-about />
       <ar-experience />
@@ -26,5 +29,29 @@ import { Services } from './sections/services/services';
     </main>
     <ar-footer />
   `,
+  styles: `
+    .skip {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 100;
+      padding: 12px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--bone);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 600;
+      transform: translateY(-200%);
+      transition: transform var(--dur-fast) var(--ease-out);
+    }
+    .skip:focus {
+      transform: none;
+    }
+    main {
+      outline: none;
+    }
+  `,
 })
-export class App {}
+export class App {
+  protected readonly i18n = inject(I18nService);
+}

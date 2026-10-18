@@ -4,7 +4,7 @@
     <ar-section-header headingId="projects-title" [heading]="t.pTitle" [intro]="t.pIntro" />
 
     <div class="controls">
-      <div class="filters" role="group" [attr.aria-label]="t.nProj">
+      <div class="filters" role="group" [attr.aria-label]="t.pFilters">
         @for (f of filters(); track f.id) {
           <button type="button" [attr.aria-pressed]="filter() === f.id" (click)="pick(f.id)">
             {{ t[f.label] }}<span class="count">{{ f.count }}</span>
@@ -12,13 +12,17 @@
         }
       </div>
       <div class="arrows">
-        <button type="button" [attr.aria-label]="t.prev" (click)="scroll(-1)">←</button>
-        <button type="button" [attr.aria-label]="t.next" (click)="scroll(1)">→</button>
+        <button type="button" [attr.aria-label]="t.prev" (click)="scroll(-1)">
+          <span aria-hidden="true">←</span>
+        </button>
+        <button type="button" [attr.aria-label]="t.next" (click)="scroll(1)">
+          <span aria-hidden="true">→</span>
+        </button>
       </div>
     </div>
   </div>
 
-  <div #track class="track" tabindex="0" role="region" [attr.aria-label]="t.pTitle">
+  <div #track class="track" tabindex="0" role="region" [attr.aria-label]="t.nProj">
     @for (p of projects(); track p.title.en) {
       <article class="card">
         <div class="shot">

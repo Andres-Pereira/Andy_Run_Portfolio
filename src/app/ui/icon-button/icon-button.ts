@@ -48,6 +48,10 @@ export type IconName = 'linkedin' | 'github';
       height: 44px;
       border-radius: 50%;
       border: 1px solid var(--border-2);
+      /* Fondo Ink translúcido: el ícono mantiene ≥ 3:1 aunque quede sobre el anillo del hero */
+      background: rgba(11, 10, 12, 0.55);
+      -webkit-backdrop-filter: blur(var(--blur-pill));
+      backdrop-filter: blur(var(--blur-pill));
       color: var(--bone);
       transition:
         border-color var(--dur-fast),

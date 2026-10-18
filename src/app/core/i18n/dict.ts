@@ -3,6 +3,7 @@
 // Fuera del diccionario (igual que en el prototipo): headline del hero, tagline, stack y nombres propios.
 
 const en = {
+  skip: 'Skip to content', // Fase 7 (accesibilidad, no visible en el mockup)
   nAbout: 'About',
   nExp: 'Experience',
   nProj: 'Projects',
@@ -46,6 +47,7 @@ const en = {
   pTitle: 'Things I have shipped',
   pIntro: 'Web apps, AI agents and landing pages. Filter by what you need.',
   shot: 'Project screenshot',
+  pFilters: 'Filter projects', // Fase 7 (accesibilidad)
   prev: 'Previous',
   next: 'Next',
   fAll: 'All',
@@ -85,6 +87,7 @@ const en = {
 export type Dict = typeof en;
 
 const es: Dict = {
+  skip: 'Saltar al contenido',
   nAbout: 'Sobre mí',
   nExp: 'Experiencia',
   nProj: 'Proyectos',
@@ -128,6 +131,7 @@ const es: Dict = {
   pTitle: 'Cosas que he entregado',
   pIntro: 'Apps web, agentes IA y landing pages. Filtra por lo que necesitas.',
   shot: 'Captura del proyecto',
+  pFilters: 'Filtrar proyectos',
   prev: 'Anterior',
   next: 'Siguiente',
   fAll: 'Todos',
