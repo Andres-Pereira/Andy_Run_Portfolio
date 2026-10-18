@@ -77,6 +77,9 @@ const en = {
   thanks: 'Thanks, {n}. Message received.',
   thanksSub: 'I will reply to your email with a next step.',
   another: 'Send another message',
+  // Fase 6 (no están en el prototipo)
+  sending: 'Sending…',
+  errSend: 'Something went wrong. Try again or email me at {email}.',
 };
 
 export type Dict = typeof en;
@@ -156,6 +159,8 @@ const es: Dict = {
   thanks: 'Gracias, {n}. Mensaje recibido.',
   thanksSub: 'Te respondo a tu email con un siguiente paso.',
   another: 'Enviar otro mensaje',
+  sending: 'Enviando…',
+  errSend: 'Algo falló. Intenta de nuevo o escríbeme a {email}.',
 };
 
 export const DICT = { en, es } as const;

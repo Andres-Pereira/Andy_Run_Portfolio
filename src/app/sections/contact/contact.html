@@ -60,11 +60,29 @@
             <textarea [formField]="contactForm.message" rows="5" [placeholder]="t.phMsg"></textarea>
           </label>
 
+          <!-- Honeypot de Web3Forms: oculto, fuera del orden de tabulación y del árbol accesible -->
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="hp"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            [checked]="botcheck()"
+            (change)="botcheck.set($any($event.target).checked)"
+          />
+
           @if (error(); as key) {
-            <p class="error" role="alert">{{ t[key] }}</p>
+            <p class="error" role="alert">{{ errorText(key) }}</p>
           }
 
-          <button type="submit" class="send">{{ t.send }}<span aria-hidden="true">→</span></button>
+          <button type="submit" class="send" [disabled]="sending()" [attr.aria-busy]="sending()">
+            @if (sending()) {
+              {{ t.sending }}
+            } @else {
+              {{ t.send }}<span aria-hidden="true">→</span>
+            }
+          </button>
           <span class="hint">{{ t.inbox }}</span>
         </form>
       } @else {

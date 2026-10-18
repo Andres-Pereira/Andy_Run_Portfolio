@@ -145,9 +145,22 @@ textarea:focus {
     background var(--dur-fast),
     transform var(--dur-fast);
 }
-.send:hover {
+.send:hover:not(:disabled) {
   background: var(--flame);
   transform: translateY(-1px);
+}
+.send:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+/* Honeypot fuera de pantalla (no display:none: algunos bots lo detectan) */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
 }
 .hint {
   font-size: 13px;

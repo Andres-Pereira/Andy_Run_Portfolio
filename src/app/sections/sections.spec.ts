@@ -1,4 +1,7 @@
+import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { WEB3FORMS } from '../core/content/profile';
 import { App } from '../app';
 import { Contact } from './contact/contact';
 import { Hero, bootTimeline } from './hero/hero';
@@ -79,6 +82,16 @@ describe('Projects', () => {
 });
 
 describe('Contact form', () => {
+  let http: HttpTestingController;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [provideHttpClient(), provideHttpClientTesting()],
+    });
+    http = TestBed.inject(HttpTestingController);
+  });
+  afterEach(() => http.verify());
+
   const setup = async () => {
     const fixture = TestBed.createComponent(Contact);
     await fixture.whenStable();
@@ -88,11 +101,26 @@ describe('Contact form', () => {
       input.value = value;
       input.dispatchEvent(new Event('input', { bubbles: true }));
     };
+    const fillValid = () => {
+      type('input[autocomplete=name]', 'Ana María');
+      type('input[type=email]', 'ana@empresa.com');
+      type('textarea', 'Necesito un CRM');
+    };
     const send = async () => {
       el.querySelector('form')!.dispatchEvent(new Event('submit', { cancelable: true }));
       await fixture.whenStable();
     };
-    return { fixture, el, type, send };
+    /** Responde la petición pendiente a Web3Forms y deja que la UI se actualice. */
+    const respond = async (body: object | 'network-error') => {
+      const req = http.expectOne(WEB3FORMS.endpoint);
+      if (body === 'network-error') req.error(new ProgressEvent('error'));
+      else req.flush(body);
+      // firstValueFrom resuelve en un microtask posterior: un tick antes de estabilizar
+      await new Promise((r) => setTimeout(r));
+      await fixture.whenStable();
+      return req;
+    };
+    return { fixture, el, type, fillValid, send, respond };
   };
 
   it('requires name and message (blank spaces do not count)', async () => {
@@ -102,6 +130,7 @@ describe('Contact form', () => {
     type('textarea', 'Hola');
     await send();
     expect(text(el.querySelector('[role=alert]'))).toBe('Add your name and a short message.');
+    http.expectNone(WEB3FORMS.endpoint);
   });
 
   it('validates the email and clears the error while typing', async () => {
@@ -117,14 +146,58 @@ describe('Contact form', () => {
     expect(el.querySelector('[role=alert]')).toBeNull();
   });
 
-  it('shows the success state with the first name and can start over', async () => {
-    const { fixture, el, type, send } = await setup();
-    type('input[autocomplete=name]', 'Ana María');
-    type('input[type=email]', 'ana@empresa.com');
-    type('textarea', 'Necesito un CRM');
-    await send();
-    expect(text(el.querySelector('.thanks h3'))).toBe('Thanks, Ana. Message received.');
+  it('posts to Web3Forms, disables the button while sending and shows the success state', async () => {
+    const { fixture, el, fillValid, send, respond } = await setup();
+    fillValid();
+    void send();
+    fixture.detectChanges();
+    const button = el.querySelector('.send') as HTMLButtonElement;
+    expect(button.disabled).toBe(true);
+    expect(text(button)).toBe('Sending…');
 
+    const req = await respond({ success: true });
+    expect(req.request.method).toBe('POST');
+    expect(req.request.body).toMatchObject({
+      access_key: WEB3FORMS.accessKey,
+      name: 'Ana María',
+      email: 'ana@empresa.com',
+      replyto: 'ana@empresa.com',
+      message: 'Necesito un CRM',
+      subject: 'New message from Ana María · andy.run',
+      lang: 'en',
+      botcheck: false,
+    });
+    expect(text(el.querySelector('.thanks h3'))).toBe('Thanks, Ana. Message received.');
+  });
+
+  it('keeps the data and shows an error when sending fails', async () => {
+    const { el, fillValid, send, respond } = await setup();
+    fillValid();
+    void send();
+    await respond('network-error');
+    expect(text(el.querySelector('[role=alert]'))).toBe(
+      'Something went wrong. Try again or email me at hello@andy.run.',
+    );
+    expect((el.querySelector('input[autocomplete=name]') as HTMLInputElement).value).toBe(
+      'Ana María',
+    );
+    expect((el.querySelector('.send') as HTMLButtonElement).disabled).toBe(false);
+  });
+
+  it('treats success: false from Web3Forms as an error', async () => {
+    const { el, fillValid, send, respond } = await setup();
+    fillValid();
+    void send();
+    await respond({ success: false, message: 'Invalid access key' });
+    expect(el.querySelector('.thanks')).toBeNull();
+    expect(text(el.querySelector('[role=alert]'))).toContain('Something went wrong');
+  });
+
+  it('can start over after a successful send', async () => {
+    const { fixture, el, fillValid, send, respond } = await setup();
+    fillValid();
+    void send();
+    await respond({ success: true });
     (el.querySelector('.again') as HTMLButtonElement).click();
     await fixture.whenStable();
     expect(el.querySelector('form')).not.toBeNull();

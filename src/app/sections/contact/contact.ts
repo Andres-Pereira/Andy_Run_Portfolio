@@ -16,6 +16,7 @@ import {
   requiredError,
   validate,
 } from '@angular/forms/signals';
+import { ContactService } from '../../core/contact/contact.service';
 import { LINKS } from '../../core/content/profile';
 import { I18nService, fmt } from '../../core/i18n/i18n.service';
 import { Button } from '../../ui/button/button';
@@ -46,6 +47,7 @@ export class Contact {
   protected readonly i18n = inject(I18nService);
   protected readonly links = LINKS;
   private readonly injector = inject(Injector);
+  private readonly contact = inject(ContactService);
 
   protected readonly model = signal<ContactMessage>({ ...EMPTY });
   protected readonly contactForm = form(this.model, (p) => {
@@ -55,8 +57,11 @@ export class Contact {
     pattern(p.email, EMAIL_PATTERN);
   });
 
-  protected readonly error = signal<'errFill' | 'errEmail' | null>(null);
+  protected readonly error = signal<'errFill' | 'errEmail' | 'errSend' | null>(null);
+  protected readonly sending = signal(false);
   protected readonly sent = signal(false);
+  /** Honeypot: checkbox invisible para humanos. */
+  protected readonly botcheck = signal(false);
 
   protected readonly thanks = computed(() =>
     fmt(this.i18n.t().thanks, { n: this.model().name.trim().split(' ')[0] ?? '' }),
@@ -65,15 +70,33 @@ export class Contact {
   private readonly thanksTitle = viewChild<ElementRef<HTMLElement>>('thanksTitle');
   private readonly nameInput = viewChild<ElementRef<HTMLInputElement>>('nameInput');
 
-  protected submit(event: Event): void {
+  protected async submit(event: Event): Promise<void> {
     event.preventDefault();
+    if (this.sending()) return;
     const f = this.contactForm;
     if (f.name().invalid() || f.message().invalid()) return this.error.set('errFill');
     if (f.email().invalid()) return this.error.set('errEmail');
 
-    // Fase 6: aquí se envía a Web3Forms.
-    this.sent.set(true);
-    this.focusAfterRender(() => this.thanksTitle());
+    this.error.set(null);
+    this.sending.set(true);
+    try {
+      await this.contact.send({
+        ...this.model(),
+        lang: this.i18n.lang(),
+        botcheck: this.botcheck(),
+      });
+      this.sent.set(true);
+      this.focusAfterRender(() => this.thanksTitle());
+    } catch {
+      // Se conservan los datos para reintentar.
+      this.error.set('errSend');
+    } finally {
+      this.sending.set(false);
+    }
+  }
+
+  protected errorText(key: 'errFill' | 'errEmail' | 'errSend'): string {
+    return fmt(this.i18n.t()[key], { email: this.links.email });
   }
 
   protected reset(): void {
