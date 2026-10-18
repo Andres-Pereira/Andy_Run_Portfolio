@@ -215,6 +215,10 @@ h1 {
   color: var(--glow);
   text-decoration-color: var(--glow);
 }
+/* Pill trae align-self: flex-start (DS); en la fila de acciones va centrado con los links */
+.actions ar-pill {
+  align-self: center;
+}
 .social {
   display: flex;
   flex-wrap: wrap;
