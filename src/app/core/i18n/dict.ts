@@ -4,6 +4,10 @@
 
 const en = {
   skip: 'Skip to content', // Fase 7 (accesibilidad, no visible en el mockup)
+  // Fase 8 (SEO, no visibles en la página)
+  metaTitle: 'Andy.Run · Andrés Pereira, Full-Stack .NET Developer',
+  metaDesc:
+    'Full-Stack .NET developer building ERPs, CRMs, internal tools and AI automations for real teams. Built right. Shipped ASAP.',
   nAbout: 'About',
   nExp: 'Experience',
   nProj: 'Projects',
@@ -88,6 +92,9 @@ export type Dict = typeof en;
 
 const es: Dict = {
   skip: 'Saltar al contenido',
+  metaTitle: 'Andy.Run · Andrés Pereira, Full-Stack .NET Developer',
+  metaDesc:
+    'Desarrollador Full-Stack .NET: ERPs, CRMs, herramientas internas y automatizaciones con IA para equipos reales. Built right. Shipped ASAP.',
   nAbout: 'Sobre mí',
   nExp: 'Experiencia',
   nProj: 'Proyectos',

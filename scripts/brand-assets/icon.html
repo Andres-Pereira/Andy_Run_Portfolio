@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- Ícono cuadrado (tile Ember + runner Ink). El script lo renderiza a 180px (apple-touch-icon) y 32px. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; }
+  html, body { overflow: hidden; background: #FF5A1F; }
+  /* Tamaño fijo en px (Chrome headless tiene un ancho mínimo de ventana): icon.html#180 */
+  svg { display: block; width: var(--size, 180px); height: var(--size, 180px); }
+</style>
+</head>
+<body>
+  <!-- Sin esquinas redondeadas: iOS aplica su propia máscara al apple-touch-icon -->
+  <svg viewBox="0 0 100 100" aria-hidden="true">
+    <g transform="translate(9 9) scale(0.82)">
+      <g fill="none" stroke="#0B0A0C" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M56 29 L42 55" stroke-width="16"/>
+        <path d="M56 33 L71 42 L81 31" stroke-width="10"/>
+        <path d="M53 34 L38 37 L28 48" stroke-width="10"/>
+        <path d="M44 55 L64 64 L60 87" stroke-width="12"/>
+        <path d="M42 56 L31 73 L13 73" stroke-width="12"/>
+      </g>
+      <circle cx="65" cy="15" r="9.5" fill="#0B0A0C"/>
+    </g>
+  </svg>
+  <script>
+    const size = parseInt(location.hash.slice(1), 10);
+    if (size) document.documentElement.style.setProperty('--size', size + 'px');
+  </script>
+</body>
+</html>

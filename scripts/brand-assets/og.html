@@ -1,0 +1,75 @@
+<!doctype html>
+<!-- Imagen Open Graph (1200×630). Se renderiza con scripts/render-brand-assets.mjs → public/og.png -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: 'Geist'; src: url('../../public/fonts/Geist-600.woff2') format('woff2'); font-weight: 600; }
+  @font-face { font-family: 'Geist'; src: url('../../public/fonts/Geist-500.woff2') format('woff2'); font-weight: 500; }
+  @font-face { font-family: 'Geist Mono'; src: url('../../public/fonts/GeistMono-500.woff2') format('woff2'); font-weight: 500; }
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #0B0A0C; }
+  body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 64px 72px;
+    font-family: 'Geist', sans-serif;
+    color: #F4EFE8;
+  }
+  /* Ember Rise desde abajo a la derecha + grain, como el contacto del sitio */
+  .rise {
+    position: absolute; inset: 0;
+    background: radial-gradient(90% 85% at 88% 125%, #FFC46B 0%, #FF8A3D 14%, #FF5A1F 28%, #16213D 62%, #0B0A0C 88%);
+  }
+  .grain {
+    position: absolute; inset: 0; opacity: 0.45; mix-blend-mode: overlay; background-size: 240px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .top, .main, .bottom { position: relative; }
+  .label { font: 500 20px/1 'Geist Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(244,239,232,0.55); }
+  .wordmark { display: flex; align-items: center; font-weight: 600; font-size: 132px; line-height: 1; letter-spacing: -0.055em; }
+  .run { color: #FF5A1F; }
+  .wordmark svg { width: 0.78em; height: 0.78em; overflow: visible; }
+  .name { margin-top: 36px; font-weight: 600; font-size: 52px; letter-spacing: -0.035em; }
+  .role { margin-top: 10px; font-weight: 500; font-size: 30px; letter-spacing: -0.02em; color: rgba(244,239,232,0.72); }
+  .bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+  .tagline { font-weight: 600; font-size: 34px; letter-spacing: -0.03em; }
+  .tagline span { color: #FF8A3D; }
+</style>
+</head>
+<body>
+  <div class="rise"></div>
+  <div class="grain"></div>
+
+  <div class="top"><span class="label">~/andy.run · portfolio</span></div>
+
+  <div class="main">
+    <div class="wordmark">
+      <span>Andy</span><span class="run">.Run</span><span>(</span>
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <rect x="11" y="51" width="8" height="8" fill="#FF8A3D"/>
+        <rect x="0" y="51" width="8" height="8" fill="#FF8A3D" fill-opacity="0.55"/>
+        <rect x="5" y="41" width="5" height="5" fill="#FF8A3D" fill-opacity="0.35"/>
+        <g fill="none" stroke="#FF5A1F" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M56 29 L42 55" stroke-width="16"/>
+          <path d="M56 33 L71 42 L81 31" stroke-width="10"/>
+          <path d="M53 34 L38 37 L28 48" stroke-width="10"/>
+          <path d="M44 55 L64 64 L60 87" stroke-width="12"/>
+          <path d="M42 56 L31 73 L13 73" stroke-width="12"/>
+        </g>
+        <circle cx="65" cy="15" r="9.5" fill="#FF5A1F"/>
+      </svg>
+      <span>)</span>
+    </div>
+    <div class="name">Andrés Pereira</div>
+    <div class="role">Full-Stack .NET Developer · AI automations</div>
+  </div>
+
+  <div class="bottom">
+    <div class="tagline">Built right. <span>Shipped ASAP.</span></div>
+    <span class="label">C# · .NET · Angular · SQL Server · AI agents</span>
+  </div>
+</body>
+</html>

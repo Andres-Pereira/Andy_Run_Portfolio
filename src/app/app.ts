@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { I18nService } from './core/i18n/i18n.service';
+import { SeoService } from './core/seo/seo.service';
 import { About } from './sections/about/about';
 import { Clients } from './sections/clients/clients';
 import { Contact } from './sections/contact/contact';
@@ -54,4 +55,9 @@ import { Services } from './sections/services/services';
 })
 export class App {
   protected readonly i18n = inject(I18nService);
+
+  constructor() {
+    // Instancia el servicio de metadatos (title, meta, OG, canonical, JSON-LD)
+    inject(SeoService);
+  }
 }
