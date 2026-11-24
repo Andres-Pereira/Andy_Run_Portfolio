@@ -21,13 +21,8 @@ import { Texture } from '../../ui/texture/texture';
 const CMD = 'Andy.Run';
 const LAST_STEP = 7;
 
-/** Ancho de los íconos sociales en la fila: 2 botones de 44px + gap de 10px. */
 const SOCIAL_WIDTH = 2 * 44 + 10;
 
-/**
- * ¿Entran CTA + links + badge + íconos en una sola línea? En mobile (< 760px) siempre
- * se dejan en la fila: ahí bajan a su propia línea, como en el mockup.
- */
 export function socialFitsInRow(
   rowWidth: number,
   itemWidths: number[],
@@ -39,20 +34,15 @@ export function socialFitsInRow(
   return needed <= rowWidth;
 }
 
-/**
- * Ritmo del boot (ms). Más rápido que el prototipo (3.9s → ~2s) a pedido de Andy:
- * los pasos (140ms) son más cortos que las transiciones (220–420ms), así que se solapan y fluyen.
- */
 export const BOOT = {
-  start: 300, // espera antes de escribir (prototipo: 500)
-  perChar: 55, // por carácter de "Andy.Run" (prototipo: 80)
-  afterTyping: 350, // isotype corriendo → paso 1 (prototipo: 1320)
-  firstStep: 100, // paso 1 → paso 2 (prototipo: 260)
-  perStep: 140, // entre pasos 2–7 (prototipo: 200)
-  beforeHeadline: 200, // paso 5 → headline (prototipo: 380)
+  start: 300,
+  perChar: 55,
+  afterTyping: 350,
+  firstStep: 100,
+  perStep: 140,
+  beforeHeadline: 200,
 } as const;
 
-/** Paso 2–4 = data lines, 7 = acciones y cursor del headline (el h1 ya es visible desde el render). */
 export function bootTimeline(): { at: number; typed?: number; runOn?: boolean; step?: number }[] {
   const events: { at: number; typed?: number; runOn?: boolean; step?: number }[] = [];
   let t = BOOT.start;
@@ -82,7 +72,6 @@ export class Hero {
   protected readonly i18n = inject(I18nService);
   protected readonly links = LINKS;
 
-  // Estado inicial = lo que se prerenderiza: texto presente en el DOM pero con opacidad 0.
   protected readonly typed = signal(0);
   protected readonly step = signal(0);
   protected readonly runOn = signal(false);
@@ -93,7 +82,6 @@ export class Hero {
   protected readonly typing = computed(() => this.step() < 1);
   protected readonly done = computed(() => this.step() >= LAST_STEP);
 
-  /** Íconos sociales en la barra de la terminal cuando no entran en la fila de acciones. */
   protected readonly iconsInBar = signal(false);
 
   private readonly actions = viewChild.required<ElementRef<HTMLElement>>('actions');
@@ -108,7 +96,6 @@ export class Hero {
     if (!isPlatformBrowser(inject(PLATFORM_ID))) return;
     const destroyRef = inject(DestroyRef);
 
-    // Tras la hidratación, para no cambiar el DOM mientras Angular lo reutiliza.
     afterNextRender(() => {
       this.watchActionsRow(destroyRef);
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return this.skip();
@@ -134,7 +121,6 @@ export class Hero {
     destroyRef.onDestroy(() => this.clear());
   }
 
-  /** Salta al estado final (click en la terminal, scroll > 40px o reduced-motion). */
   protected skip(): void {
     if (this.done()) return;
     this.clear();
@@ -143,7 +129,6 @@ export class Hero {
     this.runOn.set(!matchMedia('(prefers-reduced-motion: reduce)').matches);
   }
 
-  /** Mide la fila (y sus textos, que cambian con el idioma) y decide dónde van los íconos. */
   private watchActionsRow(destroyRef: DestroyRef): void {
     const desktop = matchMedia('(min-width: 760px)');
     const row = this.actions().nativeElement;

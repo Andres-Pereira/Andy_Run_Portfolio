@@ -1,7 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { Runner } from '../runner/runner';
 
-/** Andy.Run(runner) — logo principal en Geist 600. Trail solo desde 32px. */
 @Component({
   selector: 'ar-wordmark',
   imports: [Runner],

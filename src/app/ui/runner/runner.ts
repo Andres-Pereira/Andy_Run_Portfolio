@@ -1,7 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, PLATFORM_ID, computed, effect, inject, input, signal } from '@angular/core';
 
-// Pictograma 100×100 del DS (components/brand/Runner.jsx). h = cabeza, l = trazos [path, grosor], t = offset del trail.
 const POSES = [
   {
     h: [65, 15],
@@ -57,10 +56,8 @@ const TRAIL = [
 
 const FLICK = [1, 0.7, 0.9, 0.6];
 
-/** Frames escalonados, sin tweening (--run-frame). */
 export const RUN_FRAME_MS = 110;
 
-/** Runner de señalética. Llena su caja (por defecto 1em). Corre en el sitio mientras `running` sea true. */
 @Component({
   selector: 'ar-runner',
   template: `
@@ -97,7 +94,6 @@ export const RUN_FRAME_MS = 110;
       height: 100%;
       overflow: visible;
     }
-    /* Un padre puede ocultar el trail por media query: --runner-trail: none */
     rect {
       display: var(--runner-trail, inline);
     }
@@ -107,7 +103,6 @@ export const RUN_FRAME_MS = 110;
 export class Runner {
   readonly running = input(false);
   readonly trail = input(true);
-  /** Pose estática (0–3) cuando no corre. */
   readonly pose = input(0);
   readonly size = input('1em');
   readonly color = input('var(--ember)');

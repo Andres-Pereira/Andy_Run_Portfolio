@@ -2,7 +2,6 @@ import { Component, input } from '@angular/core';
 
 export type PillVariant = 'glass' | 'accent';
 
-/** Pill del DS: etiqueta, badge o chip de stack. */
 @Component({
   selector: 'ar-pill',
   template: `@if (dot()) {

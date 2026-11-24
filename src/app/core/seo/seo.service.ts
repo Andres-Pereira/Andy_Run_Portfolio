@@ -1,16 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { Service, effect, inject } from '@angular/core';
 import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
+import { LINKS } from '../content/profile';
 import { SITE } from '../content/site';
 import { I18nService } from '../i18n/i18n.service';
 
 const OG_LOCALE = { en: 'en_US', es: 'es_ES' } as const;
 
-/**
- * Metadatos de la página. Corre también en el prerender, así que los tags quedan en el HTML
- * estático que leen buscadores y redes sociales (que no ejecutan JS). Los tags se actualizan
- * por selector: al hidratar no se duplican los que vienen del prerender.
- */
 @Service()
 export class SeoService {
   private readonly doc = inject(DOCUMENT);
@@ -62,7 +58,8 @@ export class SeoService {
           jobTitle: SITE.jobTitle,
           url,
           image,
-          knowsAbout: ['C#', '.NET', 'Blazor', 'Angular', 'SQL Server', 'AI agents'],
+          sameAs: [LINKS.linkedin, LINKS.github],
+          knowsAbout: ['C#', '.NET', 'Angular', 'SQL Server', 'n8n', 'AI agents'],
         },
         {
           '@type': 'WebSite',

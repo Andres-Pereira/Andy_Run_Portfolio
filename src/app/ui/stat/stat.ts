@@ -2,12 +2,6 @@ import { Component, input } from '@angular/core';
 
 export type StatSize = 'sm' | 'md' | 'lg';
 
-/**
- * Número grande en Departure Mono + label Geist.
- * `sizeMobile` aplica por debajo de 760px con media query (sin leer el ancho en JS).
- * El número nunca desborda su contenedor: si no cabe al tamaño del diseño, se achica
- * (container query: ancho / (caracteres × avance de Departure Mono)).
- */
 @Component({
   selector: 'ar-stat',
   template: `
@@ -36,7 +30,6 @@ export type StatSize = 'sm' | 'md' | 'lg';
 
     .value {
       font-family: var(--font-data);
-      /* 0.64em ≈ avance por carácter de Departure Mono (0.636em) */
       font-size: min(var(--stat-fs), calc(100cqi / (var(--stat-chars) * 0.64)));
       line-height: 0.85;
       white-space: nowrap;

@@ -1,75 +1,64 @@
 import { Project } from './types';
 
-// Sample: todos los proyectos son placeholder (README › Sample content).
-// Links del prototipo (placeholder). Sin github o demo, ese botón no se renderiza.
 export const PROJECTS: Project[] = [
   {
     type: 'web',
-    title: { en: 'Sales admin panel', es: 'Panel admin de ventas' },
+    title: { en: 'Inventory and asset ERP', es: 'ERP de inventario y activos' },
     desc: {
-      en: 'Orders, quotes and stock in one place for a distribution team.',
-      es: 'Pedidos, cotizaciones y stock en un solo lugar para un equipo de distribución.',
+      en: 'KPI dashboards, sales tracking and role-based security. Deployed on Azure; today it is the company’s main system.',
+      es: 'Dashboards de KPIs, seguimiento de ventas y seguridad por roles. Desplegado en Azure; hoy es el sistema principal de la empresa.',
     },
-    stack: ['Angular', '.NET', 'SQL Server'],
-    github: 'https://github.com/',
-    demo: '#demo',
-    sample: true,
-  },
-  {
-    type: 'ai',
-    title: { en: 'WhatsApp support agent', es: 'Agente de soporte en WhatsApp' },
-    desc: {
-      en: 'Answers FAQs, schedules follow-ups and logs every chat in the CRM.',
-      es: 'Responde preguntas frecuentes, agenda seguimientos y registra cada chat en el CRM.',
-    },
-    stack: ['C#', 'AI agents', 'CRM API'],
-    demo: '#demo',
-    sample: true,
-  },
-  {
-    type: 'landing',
-    title: { en: 'Clinic landing page', es: 'Landing para clínica' },
-    desc: {
-      en: 'A fast page with online booking that replaced a phone-only flow.',
-      es: 'Una página rápida con reservas online que reemplazó el flujo solo por teléfono.',
-    },
-    stack: ['HTML', 'CSS', 'JS'],
-    github: 'https://github.com/',
-    demo: '#demo',
-    sample: true,
+    stack: ['Angular', 'C#', 'SQL Server', 'Azure'],
+    sample: false,
   },
   {
     type: 'web',
-    title: { en: 'Inventory ERP module', es: 'Módulo ERP de inventario' },
+    title: { en: '3-D Secure 2 payments', es: 'Pagos con 3-D Secure 2' },
     desc: {
-      en: 'Purchasing, stock movements and reports on top of an existing ERP.',
-      es: 'Compras, movimientos de stock y reportes sobre un ERP existente.',
+      en: 'Stripe 3DS2 authentication on a global association’s billing page, covering challenges, failures and retries without duplicate charges.',
+      es: 'Autenticación 3DS2 con Stripe en la página de pagos de una asociación global: challenges, fallos y reintentos sin cobros duplicados.',
     },
-    stack: ['ASP.NET', 'Blazor', 'SQL Server'],
-    github: 'https://github.com/',
-    sample: true,
+    stack: ['C#', 'ASP.NET Web Forms', 'JavaScript', 'Stripe'],
+    sample: false,
   },
   {
     type: 'ai',
-    title: { en: 'Invoice data-entry automation', es: 'Automatización de carga de facturas' },
+    title: { en: 'Azure DevOps automations', es: 'Automatizaciones de Azure DevOps' },
     desc: {
-      en: 'Reads supplier PDFs and loads them into the ERP for review.',
-      es: 'Lee PDFs de proveedores y los carga en el ERP para revisión.',
+      en: 'n8n workflows that write wiki pages for finished tasks, carry unfinished work into the next sprint and send ETA reminders.',
+      es: 'Workflows en n8n que escriben la wiki de las tareas terminadas, pasan el trabajo pendiente al siguiente sprint y envían recordatorios de ETA.',
     },
-    stack: ['.NET', 'AI agents', 'SQL Server'],
-    github: 'https://github.com/',
-    demo: '#demo',
-    sample: true,
+    stack: ['n8n', 'Azure DevOps API', 'JavaScript'],
+    sample: false,
   },
   {
-    type: 'landing',
-    title: { en: 'Product launch page', es: 'Página de lanzamiento' },
+    type: 'ai',
+    title: { en: 'AI development toolkit', es: 'Toolkit de desarrollo con IA' },
     desc: {
-      en: 'Launch page with a waitlist and analytics for a B2B product.',
-      es: 'Página de lanzamiento con lista de espera y analítica para un producto B2B.',
+      en: 'AI coding agents connected to Azure DevOps through MCP, with reusable skills that document tasks and create work items from emails.',
+      es: 'Agentes de IA conectados a Azure DevOps por MCP, con skills reutilizables que documentan tareas y crean work items desde correos.',
     },
-    stack: ['Angular', 'HTML', 'CSS'],
-    demo: '#demo',
-    sample: true,
+    stack: ['AI agents', 'MCP', 'Azure DevOps'],
+    sample: false,
+  },
+  {
+    type: 'web',
+    title: { en: 'Chapter management portal', es: 'Portal de gestión de capítulos' },
+    desc: {
+      en: 'Modals, reports, data tables and multi-step wizards for a national trade association’s chapter portal.',
+      es: 'Modales, reportes, tablas y wizards de varios pasos para el portal de capítulos de una asociación nacional.',
+    },
+    stack: ['C#', 'ASP.NET Web Forms', 'SQL Server', 'netFORUM'],
+    sample: false,
+  },
+  {
+    type: 'ai',
+    title: { en: 'RAG embeddings pipeline', es: 'Pipeline de embeddings RAG' },
+    desc: {
+      en: 'A local Ollama model behind an authenticated tunnel feeds n8n, which stores 768-dimension vectors in Supabase for semantic search.',
+      es: 'Un modelo local de Ollama detrás de un túnel autenticado alimenta n8n, que guarda vectores de 768 dimensiones en Supabase para búsqueda semántica.',
+    },
+    stack: ['Ollama', 'n8n', 'Supabase'],
+    sample: false,
   },
 ];

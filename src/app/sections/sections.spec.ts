@@ -26,15 +26,7 @@ describe('App shell', () => {
     const ids = [...fixture.nativeElement.querySelectorAll('[id]')]
       .map((e: Element) => e.id)
       .filter((id: string) => !id.endsWith('-title') && id !== 'main');
-    expect(ids).toEqual([
-      'top',
-      'about',
-      'experience',
-      'projects',
-      'services',
-      'clients',
-      'contact',
-    ]);
+    expect(ids).toEqual(['top', 'about', 'experience', 'projects', 'services', 'contact']);
   });
 });
 
@@ -60,7 +52,6 @@ describe('Hero boot', () => {
     await fixture.whenStable();
     const el = fixture.nativeElement as HTMLElement;
     expect(text(el.querySelector('h1'))).toBe('Building quality products.Shipping ASAP.');
-    // El h1 es el LCP: visible desde el primer render, no participa del boot
     expect(el.querySelector('h1')!.classList).not.toContain('boot');
     expect(el.querySelector('.line')!.classList).not.toContain('on');
     expect(text(el.querySelector('.sr-only'))).toBe('Andy.Run');
@@ -75,7 +66,6 @@ describe('Hero boot', () => {
 });
 
 describe('Hero social icons', () => {
-  // CTA + links + badge medidos en ES a 1000px; la fila mide 885px y el gap es 28px
   const es = [204, 311, 274];
 
   it('move to the terminal bar on desktop when the row cannot fit them', () => {
@@ -89,21 +79,20 @@ describe('Hero social icons', () => {
 });
 
 describe('Projects', () => {
-  it('shows counts, filters cards and renders buttons only for existing links', async () => {
+  it('shows counts, hides empty filters and renders buttons only for existing links', async () => {
     const fixture = TestBed.createComponent(Projects);
     await fixture.whenStable();
     const el = fixture.nativeElement as HTMLElement;
     const filters = [...el.querySelectorAll('.filters button')];
-    expect(filters.map(text)).toEqual(['All6', 'Web apps2', 'AI agents2', 'Landing pages2']);
+    expect(filters.map(text)).toEqual(['All6', 'Web apps3', 'AI agents3']);
     expect(el.querySelectorAll('.card').length).toBe(6);
 
     (filters[2] as HTMLButtonElement).click();
     fixture.detectChanges();
     const cards = [...el.querySelectorAll('.card')];
-    expect(cards.length).toBe(2);
+    expect(cards.length).toBe(3);
     expect(filters[2].getAttribute('aria-pressed')).toBe('true');
-    // "WhatsApp support agent" no tiene repo: solo Live demo
-    expect([...cards[0].querySelectorAll('.links a')].map(text)).toEqual(['Live demo→']);
+    expect(cards[0].querySelectorAll('.links a').length).toBe(0);
   });
 });
 
@@ -136,12 +125,10 @@ describe('Contact form', () => {
       el.querySelector('form')!.dispatchEvent(new Event('submit', { cancelable: true }));
       await fixture.whenStable();
     };
-    /** Responde la petición pendiente a Web3Forms y deja que la UI se actualice. */
     const respond = async (body: object | 'network-error') => {
       const req = http.expectOne(WEB3FORMS.endpoint);
       if (body === 'network-error') req.error(new ProgressEvent('error'));
       else req.flush(body);
-      // firstValueFrom resuelve en un microtask posterior: un tick antes de estabilizar
       await new Promise((r) => setTimeout(r));
       await fixture.whenStable();
       return req;
@@ -202,7 +189,7 @@ describe('Contact form', () => {
     void send();
     await respond('network-error');
     expect(text(el.querySelector('[role=alert]'))).toBe(
-      'Something went wrong. Try again or email me at hello@andy.run.',
+      'Something went wrong. Try again or email me at andres.pereira.coss@gmail.com.',
     );
     expect((el.querySelector('input[autocomplete=name]') as HTMLInputElement).value).toBe(
       'Ana María',

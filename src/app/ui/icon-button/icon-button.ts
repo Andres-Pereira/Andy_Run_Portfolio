@@ -2,10 +2,6 @@ import { Component, input } from '@angular/core';
 
 export type IconName = 'linkedin' | 'github';
 
-/**
- * Link redondo de 44px con ícono Lucide (sustitución: la marca no tiene set de íconos).
- * Uso: <a arIconButton icon="github" href="…" aria-label="GitHub"></a> — el aria-label es obligatorio.
- */
 @Component({
   selector: 'a[arIconButton]',
   template: `
@@ -48,7 +44,6 @@ export type IconName = 'linkedin' | 'github';
       height: 44px;
       border-radius: 50%;
       border: 1px solid var(--border-2);
-      /* Fondo Ink translúcido: el ícono mantiene ≥ 3:1 aunque quede sobre el anillo del hero */
       background: rgba(11, 10, 12, 0.55);
       -webkit-backdrop-filter: blur(var(--blur-pill));
       backdrop-filter: blur(var(--blur-pill));
@@ -58,7 +53,6 @@ export type IconName = 'linkedin' | 'github';
         color var(--dur-fast),
         transform var(--dur-fast);
     }
-    /* Compacto (32px): para la barra de título de la terminal en desktop */
     :host(.sm) {
       width: 32px;
       height: 32px;

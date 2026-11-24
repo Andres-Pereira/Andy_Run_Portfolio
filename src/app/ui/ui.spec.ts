@@ -8,7 +8,6 @@ import { Runner, RUN_FRAME_MS } from './runner/runner';
 import { Stat } from './stat/stat';
 import { Wordmark } from './wordmark/wordmark';
 
-// jsdom no implementa matchMedia.
 const stubReducedMotion = (reduce: boolean) =>
   vi.stubGlobal('matchMedia', (q: string) => ({
     matches: reduce && q.includes('reduce'),

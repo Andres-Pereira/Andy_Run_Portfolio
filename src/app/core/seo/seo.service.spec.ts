@@ -49,7 +49,6 @@ describe('SeoService', () => {
     expect(meta('property', 'og:locale')[0].getAttribute('content')).toBe('es_ES');
     expect(meta('property', 'og:title')).toHaveLength(1);
 
-    // Una segunda instancia (como al hidratar sobre el HTML prerenderizado) reutiliza los tags
     create();
     expect(document.head.querySelectorAll('link[rel="canonical"]')).toHaveLength(1);
     expect(document.head.querySelectorAll('script#ld-json')).toHaveLength(1);

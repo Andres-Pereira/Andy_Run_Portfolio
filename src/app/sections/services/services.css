@@ -20,7 +20,6 @@ section {
   display: flex;
 }
 
-/* Desktop: grid auto-fit (4 columnas a 1280) */
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
@@ -100,13 +99,12 @@ h3 {
   color: var(--fg-2);
 }
 .time-value {
-  color: var(--flame); /* QA de Andy: destacar el tiempo estimado */
+  color: var(--flame);
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-/* Mobile: carrusel con snap que sangra hasta los bordes de la pantalla */
 @media (max-width: 759.98px) {
   .list {
     display: flex;

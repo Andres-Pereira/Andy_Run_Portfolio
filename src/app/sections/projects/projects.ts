@@ -18,7 +18,6 @@ const FILTERS: { id: Filter; label: keyof Dict }[] = [
 
 const TYPE_LABEL: Record<ProjectType, keyof Dict> = { web: 'tWeb', ai: 'tAi', landing: 'tLanding' };
 
-/** Desplazamiento de los botones prev/next (prototipo). */
 export const SCROLL_STEP = 420;
 
 @Component({
@@ -37,7 +36,7 @@ export class Projects {
     FILTERS.map((f) => ({
       ...f,
       count: f.id === 'all' ? PROJECTS.length : PROJECTS.filter((p) => p.type === f.id).length,
-    })),
+    })).filter((f) => f.count > 0),
   );
 
   protected readonly projects = computed(() => {
@@ -47,7 +46,6 @@ export class Projects {
 
   private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');
 
-  /** Solo los links externos abren en pestaña nueva. */
   protected external(url: string): '_blank' | null {
     return /^https?:\/\//.test(url) ? '_blank' : null;
   }

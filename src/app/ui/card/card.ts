@@ -1,6 +1,5 @@
 import { Component, input } from '@angular/core';
 
-/** Card plana Carbon — el 80% calmo. Glow Ember opcional que sube desde abajo. */
 @Component({
   selector: 'ar-card',
   template: `
@@ -45,7 +44,7 @@ import { Component, input } from '@angular/core';
     .eyebrow {
       margin-bottom: 14px;
       font-family: var(--font-code);
-      font-size: 12px; /* line-height normal, como el bundle */
+      font-size: 12px;
       letter-spacing: var(--tr-label);
       text-transform: uppercase;
       color: var(--flame);
@@ -71,7 +70,6 @@ import { Component, input } from '@angular/core';
 })
 export class Card {
   readonly eyebrow = input<string>();
-  /** `heading` y no `title`: un input `title` también pondría el tooltip nativo en el host. */
   readonly heading = input<string>();
   readonly glow = input(false, { transform: (v: boolean | '') => v !== false });
 }

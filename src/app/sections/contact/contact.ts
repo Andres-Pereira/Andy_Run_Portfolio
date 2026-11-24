@@ -31,10 +31,8 @@ export interface ContactMessage {
 
 const EMPTY: ContactMessage = { name: '', email: '', message: '' };
 
-/** Regla del prototipo: \S+@\S+\.\S+ */
 export const EMAIL_PATTERN = /^\S+@\S+\.\S+$/;
 
-/** Nombre y mensaje obligatorios (solo espacios no cuenta, como el trim() del prototipo). */
 const notBlank = ({ value }: { value: () => string }) => (value().trim() ? null : requiredError());
 
 @Component({
@@ -60,7 +58,6 @@ export class Contact {
   protected readonly error = signal<'errFill' | 'errEmail' | 'errSend' | null>(null);
   protected readonly sending = signal(false);
   protected readonly sent = signal(false);
-  /** Honeypot: checkbox invisible para humanos. */
   protected readonly botcheck = signal(false);
 
   protected readonly thanks = computed(() =>
@@ -88,7 +85,6 @@ export class Contact {
       this.sent.set(true);
       this.focusAfterRender(() => this.thanksTitle());
     } catch {
-      // Se conservan los datos para reintentar.
       this.error.set('errSend');
     } finally {
       this.sending.set(false);

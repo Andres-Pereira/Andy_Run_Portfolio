@@ -4,11 +4,6 @@ export type ButtonVariant = 'primary' | 'glass';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonIcon = 'download';
 
-/**
- * Botón pill del DS sobre el elemento nativo:
- *   <a arButton href="#contact" arrow>…</a>   ·   <button arButton type="submit">…</button>
- * `icon` agrega un ícono Lucide antes del texto (adición pedida en QA: descargas).
- */
 @Component({
   selector: 'a[arButton], button[arButton]',
   template: `@if (icon() === 'download') {

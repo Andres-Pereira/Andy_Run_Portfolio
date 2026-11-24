@@ -1,9 +1,5 @@
 import { Component, input } from '@angular/core';
 
-/**
- * Apertura de sección: h2 grande a la izquierda, intro a la derecha (grid auto-fit).
- * Sin índice numérico (decisión de Andy). Las acciones (CV, PDF) van fuera, como en el prototipo.
- */
 @Component({
   selector: 'ar-section-header',
   template: `
@@ -48,6 +44,5 @@ import { Component, input } from '@angular/core';
 export class SectionHeader {
   readonly heading = input.required<string>();
   readonly intro = input<string>();
-  /** Para aria-labelledby de la <section>. */
   readonly headingId = input<string>();
 }

@@ -1,5 +1,3 @@
-/* Andy.Run — tokens del design system (_ds/…/tokens) portados como CSS custom properties */
-/* fonts.css (@font-face) va inline en index.html para que no dependa del CSS async */
 @import './styles/tokens/colors.css';
 @import './styles/tokens/gradients.css';
 @import './styles/tokens/typography.css';

@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { I18nService } from './core/i18n/i18n.service';
 import { SeoService } from './core/seo/seo.service';
 import { About } from './sections/about/about';
-import { Clients } from './sections/clients/clients';
 import { Contact } from './sections/contact/contact';
 import { Experience } from './sections/experience/experience';
 import { Footer } from './sections/footer/footer';
@@ -11,12 +10,10 @@ import { Nav } from './sections/nav/nav';
 import { Projects } from './sections/projects/projects';
 import { Services } from './sections/services/services';
 
-// Orden del handoff: Hero → About → Experience → Projects → Services → Clients → Contact → Footer.
 @Component({
   selector: 'app-root',
-  imports: [About, Clients, Contact, Experience, Footer, Hero, Nav, Projects, Services],
+  imports: [About, Contact, Experience, Footer, Hero, Nav, Projects, Services],
   template: `
-    <!-- Skip link: invisible hasta recibir foco con Tab -->
     <a class="skip" href="#main">{{ i18n.t().skip }}</a>
     <ar-nav />
     <main id="main" tabindex="-1">
@@ -25,7 +22,6 @@ import { Services } from './sections/services/services';
       <ar-experience />
       <ar-projects />
       <ar-services />
-      <ar-clients />
       <ar-contact />
     </main>
     <ar-footer />
@@ -57,7 +53,6 @@ export class App {
   protected readonly i18n = inject(I18nService);
 
   constructor() {
-    // Instancia el servicio de metadatos (title, meta, OG, canonical, JSON-LD)
     inject(SeoService);
   }
 }

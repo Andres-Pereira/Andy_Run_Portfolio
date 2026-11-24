@@ -1,5 +1,3 @@
-// Renderiza las imágenes de marca a PNG con Chrome headless (sin dependencias extra).
-// Uso: npm run brand-assets   ·   Chrome: CHROME_PATH o la instalación por defecto de Windows.
 import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
@@ -29,15 +27,19 @@ const assets = [
 
 for (const { template, out, width, height } of assets) {
   const target = join(root, 'public', out);
-  execFileSync(chrome, [
-    '--headless=new',
-    '--disable-gpu',
-    '--hide-scrollbars',
-    '--force-device-scale-factor=1',
-    '--virtual-time-budget=2000',
-    `--window-size=${width},${height}`,
-    `--screenshot=${target}`,
-    `${pathToFileURL(join(templates, template)).href}#${width}`,
-  ], { stdio: 'ignore' });
+  execFileSync(
+    chrome,
+    [
+      '--headless=new',
+      '--disable-gpu',
+      '--hide-scrollbars',
+      '--force-device-scale-factor=1',
+      '--virtual-time-budget=2000',
+      `--window-size=${width},${height}`,
+      `--screenshot=${target}`,
+      `${pathToFileURL(join(templates, template)).href}#${width}`,
+    ],
+    { stdio: 'ignore' },
+  );
   console.log(`public/${out} (${width}×${height})`);
 }

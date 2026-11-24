@@ -33,7 +33,6 @@ section {
   color: var(--flame);
 }
 
-/* Experiencia */
 .jobs {
   flex: 1 1 560px;
   min-width: 0;
@@ -107,7 +106,6 @@ h4 {
   gap: 6px;
 }
 
-/* Estudios */
 .studies {
   flex: 1 1 380px;
   min-width: 0;

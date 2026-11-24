@@ -9,7 +9,6 @@ export interface ContactPayload {
   email: string;
   message: string;
   lang: Lang;
-  /** Honeypot: un humano nunca lo marca. */
   botcheck: boolean;
 }
 
@@ -20,18 +19,16 @@ interface Web3FormsResponse {
 
 export const SEND_TIMEOUT_MS = 15_000;
 
-/** Envía el formulario de contacto a Web3Forms, que lo reenvía al correo de Andy. */
 @Service()
 export class ContactService {
   private readonly http = inject(HttpClient);
 
-  /** Resuelve si Web3Forms confirma el envío; rechaza ante error de red, timeout o success: false. */
   async send({ name, email, message, lang, botcheck }: ContactPayload): Promise<void> {
     const body = {
       access_key: WEB3FORMS.accessKey,
       subject: `New message from ${name.trim()} · andy.run`,
       from_name: 'Andy.Run portfolio',
-      replyto: email.trim(), // responder desde el correo va directo al visitante
+      replyto: email.trim(),
       name: name.trim(),
       email: email.trim(),
       message: message.trim(),

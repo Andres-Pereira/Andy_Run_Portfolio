@@ -2,10 +2,6 @@ import { Component, input } from '@angular/core';
 
 export type TextureVariant = 'fluted-ring' | 'ember-rise';
 
-/**
- * Fondo de firma del DS (components/backgrounds/Texture.jsx). Llena su padre posicionado.
- * Solo las dos variantes que usa la página (regla 80/20): fluted-ring (A3, hero) y ember-rise (contacto).
- */
 @Component({
   selector: 'ar-texture',
   template: `

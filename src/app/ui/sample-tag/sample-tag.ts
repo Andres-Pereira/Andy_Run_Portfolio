@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-/** Tag "Sample" en Glow: marca contenido placeholder que Andy reemplaza antes del lanzamiento. */
 @Component({
   selector: 'ar-sample-tag',
   template: `Sample`,

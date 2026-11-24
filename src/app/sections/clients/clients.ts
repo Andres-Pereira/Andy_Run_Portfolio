@@ -12,7 +12,6 @@ import { SectionHeader } from '../../ui/section-header/section-header';
         <ar-section-header headingId="clients-title" [heading]="i18n.t().cTitle" />
         <ul class="grid">
           @for (c of clients; track $index) {
-            <!-- Sample: los logos reales irán con NgOptimizedImage (ancho/alto fijos) -->
             <li class="logo">
               <div class="ph" aria-hidden="true"></div>
               <span>{{ c.name ?? i18n.t().client }}</span>
@@ -34,7 +33,6 @@ import { SectionHeader } from '../../ui/section-header/section-header';
       flex-direction: column;
       gap: clamp(40px, 5vw, 64px);
     }
-    /* auto-fill con min(46%, 220px): 2 columnas en mobile */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(min(46%, 220px), 1fr));

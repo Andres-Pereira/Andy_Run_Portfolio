@@ -17,7 +17,6 @@ section {
   align-items: stretch;
 }
 
-/* Retrato placeholder: hatched + backlight Ember */
 .portrait {
   position: relative;
   min-height: 440px;
@@ -61,7 +60,6 @@ figcaption {
   text-wrap: pretty;
 }
 
-/* Stats (inspirado en hero 1b) */
 .stats {
   flex: 1;
   display: grid;

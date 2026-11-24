@@ -1,5 +1,3 @@
-/* Base global — tokens/base.css del DS + reglas globales del prototipo (Portfolio.dc.html) */
-
 *,
 *::before,
 *::after {
@@ -80,13 +78,11 @@ textarea::placeholder {
   outline-offset: 3px;
 }
 
-/* La nav es sticky: las anclas no deben quedar debajo de ella */
 section[id],
 header[id] {
   scroll-margin-top: var(--nav-offset);
 }
 
-/* Utilidades */
 .u-container {
   width: 100%;
   max-width: var(--content-max);
@@ -111,10 +107,13 @@ header[id] {
   border: 0;
 }
 
-/* Animaciones compartidas */
 @keyframes arBlink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

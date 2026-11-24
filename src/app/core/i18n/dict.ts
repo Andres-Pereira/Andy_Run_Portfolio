@@ -1,10 +1,5 @@
-// Textos literales de dict() en design_handoff_andy_run_portfolio/Portfolio.dc.html.
-// Mismos nombres de clave que el prototipo para poder compararlos línea por línea.
-// Fuera del diccionario (igual que en el prototipo): headline del hero, tagline, stack y nombres propios.
-
 const en = {
-  skip: 'Skip to content', // Fase 7 (accesibilidad, no visible en el mockup)
-  // Fase 8 (SEO, no visibles en la página)
+  skip: 'Skip to content',
   metaTitle: 'Andy.Run · Andrés Pereira, Full-Stack .NET Developer',
   metaDesc:
     'Full-Stack .NET developer building ERPs, CRMs, internal tools and AI automations for real teams. Built right. Shipped ASAP.',
@@ -30,7 +25,7 @@ const en = {
   projects: 'Projects shipped',
   hours: 'Hours saved with automations',
   now: 'Currently',
-  since: 'Mar 2024 – Present',
+  since: 'Mar 2026 – Present',
   eTitle: 'Experience & studies',
   eIntro: 'Where I have built business software, and what I studied to do it well.',
   cv: 'Download CV (EN)',
@@ -39,11 +34,9 @@ const en = {
   eduLabel: 'Studies',
   eduDegree: 'Degree',
   eduSys: 'Systems Engineering',
-  eduDipl: 'Diploma',
-  eduUx: 'UI/UX Design',
-  institution: 'Institution',
+  eduDipl: 'Bootcamp',
+  eduUx: 'Full-Stack Development',
   certs: 'Certifications',
-  certName: 'Certification name · Issuer',
   langs: 'Languages',
   english: 'English',
   spanish: 'Spanish',
@@ -51,7 +44,7 @@ const en = {
   pTitle: 'Things I have shipped',
   pIntro: 'Web apps, AI agents and landing pages. Filter by what you need.',
   shot: 'Project screenshot',
-  pFilters: 'Filter projects', // Fase 7 (accesibilidad)
+  pFilters: 'Filter projects',
   prev: 'Previous',
   next: 'Next',
   fAll: 'All',
@@ -83,7 +76,6 @@ const en = {
   thanks: 'Thanks, {n}. Message received.',
   thanksSub: 'I will reply to your email with a next step.',
   another: 'Send another message',
-  // Fase 6 (no están en el prototipo)
   sending: 'Sending…',
   errSend: 'Something went wrong. Try again or email me at {email}.',
 };
@@ -117,7 +109,7 @@ const es: Dict = {
   projects: 'Proyectos entregados',
   hours: 'Horas ahorradas con automatizaciones',
   now: 'Actualmente',
-  since: 'Mar 2024 – Actualidad',
+  since: 'Mar 2026 – Actualidad',
   eTitle: 'Experiencia y estudios',
   eIntro: 'Dónde he construido software de negocio y qué estudié para hacerlo bien.',
   cv: 'Descargar CV (EN)',
@@ -126,11 +118,9 @@ const es: Dict = {
   eduLabel: 'Estudios',
   eduDegree: 'Carrera',
   eduSys: 'Ingeniería de Sistemas',
-  eduDipl: 'Diplomado',
-  eduUx: 'Diseño UI/UX',
-  institution: 'Institución',
+  eduDipl: 'Bootcamp',
+  eduUx: 'Desarrollo Full-Stack',
   certs: 'Certificaciones',
-  certName: 'Nombre de la certificación · Emisor',
   langs: 'Idiomas',
   english: 'Inglés',
   spanish: 'Español',

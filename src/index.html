@@ -10,7 +10,6 @@
     <link rel="preload" href="/fonts/Geist-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/Geist-600.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/GeistMono-500.woff2" as="font" type="font/woff2" crossorigin />
-    <!-- @font-face inline: el CSS global carga async; así las fuentes precargadas se usan apenas llegan -->
     <style>
       @font-face {
         font-family: 'Geist';
@@ -65,7 +64,6 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <!-- Sin JS no corre el boot del hero: mostrar su estado final -->
     <noscript>
       <style>
         .boot {

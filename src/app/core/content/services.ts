@@ -1,6 +1,5 @@
 import { Service } from './types';
 
-// Sample: solo los tiempos estimados.
 export const SERVICES: Service[] = [
   {
     index: '01 · Web apps',
@@ -15,7 +14,7 @@ export const SERVICES: Service[] = [
       { en: 'Internal dashboards', es: 'Dashboards internos' },
     ],
     time: { en: 'From 4 weeks', es: 'Desde 4 semanas' },
-    sample: true,
+    sample: false,
   },
   {
     index: '02 · ERP · CRM',
@@ -30,7 +29,7 @@ export const SERVICES: Service[] = [
       { en: 'Admin panels and reports', es: 'Paneles y reportes' },
     ],
     time: { en: 'From 8 weeks', es: 'Desde 8 semanas' },
-    sample: true,
+    sample: false,
   },
   {
     index: '03 · AI',
@@ -45,7 +44,7 @@ export const SERVICES: Service[] = [
       { en: 'Data entry from PDFs', es: 'Carga de datos desde PDFs' },
     ],
     time: { en: 'From 2 weeks', es: 'Desde 2 semanas' },
-    sample: true,
+    sample: false,
   },
   {
     index: '04 · Web',
@@ -60,6 +59,6 @@ export const SERVICES: Service[] = [
       { en: 'Campaign pages', es: 'Páginas de campaña' },
     ],
     time: { en: 'From 1 week', es: 'Desde 1 semana' },
-    sample: true,
+    sample: false,
   },
 ];

@@ -4,7 +4,6 @@ section {
   padding: var(--section-y) var(--gutter) clamp(120px, 14vw, 200px);
 }
 
-/* Ember Rise se extiende 40% bajo la sección: la luz más intensa queda abajo */
 .bg {
   position: absolute;
   left: 0;
@@ -77,7 +76,6 @@ h2 {
   color: var(--fg-2);
 }
 
-/* Form card */
 .panel {
   flex: 1 1 420px;
   min-width: 0;
@@ -154,7 +152,6 @@ textarea:focus {
   opacity: 0.7;
 }
 
-/* Honeypot fuera de pantalla (no display:none: algunos bots lo detectan) */
 .hp {
   position: absolute;
   left: -9999px;
@@ -168,7 +165,6 @@ textarea:focus {
   color: var(--fg-2);
 }
 
-/* Estado de éxito */
 .thanks {
   display: flex;
   flex-direction: column;

@@ -1,11 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { Runner } from '../runner/runner';
 
-/**
- * (runner) — avatar, favicon, marca de agua. Trail solo desde 48px.
- * Sin `size` es fluido: hereda el font-size del padre, y el padre controla
- * trail y peso con --runner-trail y --iso-weight (p. ej. el comando del hero, que usa clamp()).
- */
 @Component({
   selector: 'ar-isotype',
   imports: [Runner],

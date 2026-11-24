@@ -50,32 +50,21 @@
         <ar-card [eyebrow]="t.eduDegree" [heading]="t.eduSys">
           <div class="degree">
             <span class="bone">{{ studies.degree.institution }}</span>
-            <span class="mono"
-              >{{ studies.degree.years }}
-              @if (studies.degree.sample) {
-                · Sample
-              }
-            </span>
+            <span class="mono">{{ studies.degree.years }}</span>
           </div>
         </ar-card>
 
         <ar-card [eyebrow]="t.eduDipl" [heading]="t.eduUx">
           <span class="mono"
-            >{{ t.institution }} · {{ studies.diploma.years }}
-            @if (studies.diploma.sample) {
-              · Sample
-            }
-          </span>
+            >{{ studies.bootcamp.institution }} · {{ studies.bootcamp.years }}</span
+          >
         </ar-card>
 
         <ar-card [eyebrow]="t.certs">
           <ul class="rows">
             @for (c of studies.certifications; track $index) {
               <li>
-                <span class="bone">{{ c.name ? i18n.pick(c.name) : t.certName }}</span>
-                @if (c.sample) {
-                  <span class="mono">Sample</span>
-                }
+                <span class="bone">{{ i18n.pick(c) }}</span>
               </li>
             }
           </ul>

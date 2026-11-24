@@ -2,12 +2,10 @@
   position: relative;
   display: block;
   overflow: hidden;
-  /* QA de Andy: menos aire arriba que el mockup (clamp(32px, 6vw, 96px)) para que la terminal entre completa */
   padding: clamp(16px, 2.2vw, 40px) var(--gutter) clamp(72px, 9vw, 140px);
   scroll-margin-top: var(--nav-offset);
 }
 
-/* Fondo: fluted-ring (A3) + velo hacia Ink */
 .bg {
   position: absolute;
   inset: 0;
@@ -36,7 +34,6 @@
   gap: 28px;
 }
 
-/* Terminal */
 .terminal {
   position: relative;
   max-width: 1000px;
@@ -74,7 +71,6 @@
   gap: 8px;
   transition: opacity 300ms;
 }
-/* Con íconos de 32px la barra conserva su alto (~45px) */
 .bar.with-icons {
   padding-block: 6px;
 }
@@ -85,7 +81,6 @@
   padding: clamp(22px, 3vw, 40px) clamp(18px, 3vw, 44px) clamp(24px, 3vw, 40px);
 }
 
-/* Línea de comando: el tamaño del prototipo es round(clamp(30, 3.6vw, 52)) */
 .cmd {
   display: flex;
   align-items: center;
@@ -94,7 +89,6 @@
   font-weight: 600;
   letter-spacing: var(--wordmark-tracking);
   line-height: 1;
-  /* Isotype fluido: trail y peso como en el DS (trail ≥ 48px ⇔ ancho ≥ 1320px) */
   --runner-trail: none;
   --iso-weight: 700;
 }
@@ -117,7 +111,7 @@
   color: var(--ember);
 }
 .nojs {
-  display: none; /* index.html lo muestra dentro de <noscript> */
+  display: none;
 }
 
 .cursor {
@@ -129,7 +123,6 @@
   animation: arBlink 1.06s steps(1) infinite;
 }
 
-/* Data lines */
 .data {
   display: flex;
   flex-direction: column;
@@ -171,7 +164,6 @@ dd {
   color: var(--fg-2);
 }
 
-/* Headline */
 h1 {
   padding-top: clamp(18px, 2vw, 26px);
   border-top: 1px solid var(--border-1);
@@ -185,7 +177,6 @@ h1 {
   color: var(--flame);
 }
 
-/* Boot: estados prerenderizados ocultos; .on los revela */
 .boot {
   opacity: 0;
 }
@@ -199,7 +190,6 @@ h1 {
   transition: opacity 300ms;
 }
 
-/* Acciones */
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -229,7 +219,6 @@ h1 {
   color: var(--glow);
   text-decoration-color: var(--glow);
 }
-/* Pill trae align-self: flex-start (DS); en la fila de acciones va centrado con los links */
 .actions ar-pill {
   align-self: center;
 }
@@ -241,7 +230,6 @@ h1 {
   margin-left: auto;
 }
 
-/* Mobile: la textura sube arriba y la terminal baja ~34vw para que se vea el anillo */
 @media (max-width: 759.98px) {
   .tex {
     left: -45%;
@@ -258,7 +246,6 @@ h1 {
       #0b0a0c 52%
     );
   }
-  /* QA de Andy: la terminal sube (mockup: 34vw) para que el hero entero entre en la primera vista */
   .terminal {
     margin-top: 12vw;
   }
@@ -267,11 +254,6 @@ h1 {
   }
 }
 
-/*
- * Desktop: el hero completo (terminal + fila del CTA) debe entrar en la primera pantalla.
- * Cada medida es el menor entre su valor por ancho (el del mockup) y uno por alto visible (svh):
- * en pantallas altas (1440×900) no cambia nada; en pantallas bajas la terminal se compacta.
- */
 @media (min-width: 760px) {
   :host {
     padding-top: clamp(12px, min(2.2vw, 2.6svh), 40px);

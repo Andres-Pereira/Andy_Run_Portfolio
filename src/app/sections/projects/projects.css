@@ -77,7 +77,6 @@ section {
   color: var(--flame);
 }
 
-/* Carrusel: alineado al borde de 1280px y con snap */
 .track {
   display: flex;
   gap: 16px;

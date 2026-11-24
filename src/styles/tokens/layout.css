@@ -1,11 +1,10 @@
-/* Tokens propios de la página (README del handoff), complementan spacing.css del DS */
 :root {
   --nav-offset: 64px;
-  /* Padding lateral que alinea los carruseles con el borde de 1280px */
   --track-pad: max(var(--gutter), calc((100% - var(--content-max)) / 2));
-  /* Superficies hatched usadas como placeholder de imágenes */
-  --hatch: repeating-linear-gradient(135deg, #1C1B20 0 14px, #18171b 14px 28px);
-  --shadow-backlight: inset -70px 0 130px -40px rgba(255, 90, 31, 0.7), inset 0 -90px 130px -60px rgba(255, 138, 61, 0.4);
+  --hatch: repeating-linear-gradient(135deg, #1c1b20 0 14px, #18171b 14px 28px);
+  --shadow-backlight:
+    inset -70px 0 130px -40px rgba(255, 90, 31, 0.7),
+    inset 0 -90px 130px -60px rgba(255, 138, 61, 0.4);
   --ring-focus: 0 0 0 3px rgba(255, 90, 31, 0.35);
-  --bp-mobile: 760px; /* referencia; las media queries usan max-width: 759.98px */
+  --bp-mobile: 760px;
 }

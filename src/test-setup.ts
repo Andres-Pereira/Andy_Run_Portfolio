@@ -1,6 +1,3 @@
-// Setup global de Vitest: APIs del navegador que jsdom / Node no traen listas.
-
-// jsdom no implementa matchMedia. Default: sin reduced-motion (los specs lo sobrescriben con vi.stubGlobal).
 if (typeof globalThis.matchMedia !== 'function') {
   globalThis.matchMedia = ((query: string) => ({
     matches: false,
@@ -14,7 +11,6 @@ if (typeof globalThis.matchMedia !== 'function') {
   })) as typeof globalThis.matchMedia;
 }
 
-// Node ≥ 25 expone un localStorage global indefinido sin --localstorage-file que oculta el de jsdom.
 if (typeof globalThis.localStorage?.getItem !== 'function') {
   const store = new Map<string, string>();
   Object.defineProperty(globalThis, 'localStorage', {
@@ -32,7 +28,6 @@ if (typeof globalThis.localStorage?.getItem !== 'function') {
   });
 }
 
-// jsdom no implementa el scroll programático en elementos.
 for (const method of ['scrollTo', 'scrollBy'] as const) {
   if (typeof Element.prototype[method] !== 'function') {
     Element.prototype[method] = function () {} as Element[typeof method];
