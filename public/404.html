@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Page not found · Andy.Run</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0B0A0C" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      @font-face {
+        font-family: 'Geist';
+        src: url('/fonts/Geist-600.woff2') format('woff2');
+        font-weight: 600;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Geist Mono';
+        src: url('/fonts/GeistMono-500.woff2') format('woff2');
+        font-weight: 500;
+        font-display: swap;
+      }
+      * { margin: 0; box-sizing: border-box; }
+      body {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: radial-gradient(120% 80% at 50% 115%, #ffc46b 0%, #ff8a3d 14%, #ff5a1f 28%, #16213d 62%, #0b0a0c 88%);
+        color: #f4efe8;
+        font-family: 'Geist', system-ui, sans-serif;
+      }
+      main { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; max-width: 560px; }
+      .code { font: 500 14px/1 'Geist Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; color: #ff8a3d; }
+      h1 { font-size: clamp(40px, 8vw, 72px); font-weight: 600; letter-spacing: -0.05em; line-height: 0.95; }
+      p { font-size: 18px; line-height: 1.55; color: rgba(244, 239, 232, 0.72); }
+      a {
+        display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px;
+        background: #ff5a1f; color: #0b0a0c; font-weight: 600; text-decoration: none;
+        box-shadow: 0 10px 34px -8px rgba(255, 90, 31, 0.7);
+      }
+      a:hover { background: #ff8a3d; }
+      a:focus-visible { outline: 2px solid #ffc46b; outline-offset: 3px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <span class="code">404 · Not found</span>
+      <h1>This page went for a run.</h1>
+      <p>The link may be broken or the page may have moved. · Esta página no existe o cambió de lugar.</p>
+      <a href="/">Back to Andy.Run <span aria-hidden="true">→</span></a>
+    </main>
+  </body>
+</html>
